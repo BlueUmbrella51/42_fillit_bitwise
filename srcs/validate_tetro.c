@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 static int count_ones(unsigned short *tetro)
 {
@@ -77,6 +78,7 @@ static  int tetro_check(unsigned short *tetro)
             count += count_sides(index, tetro);        
         index--;
     }
+    printf("This tetro has %i touching sides\n", count);
     if (count == 6 || count == 8)
         return (1);
     return (0);
@@ -85,12 +87,25 @@ static  int tetro_check(unsigned short *tetro)
 int validate_tetro(unsigned short *tetro)
 {   
     if (!tetro)
+    {
+        printf("error: no tetro was found\n");
         return (-1);
+    }
     if (*tetro >= 61444)
+    {
+        printf("error: value of dest is too large to be valid\n");
         return (0);
+    }
     if(count_ones(tetro) != 4)
+    {
+        printf("error: tetro does not contain the right amount of blocks\n");
         return (0);
+    }
     if(tetro_check(tetro) == 0)
+    {
+        printf("error: tetro has the wrong number of touching sides\n");
         return (0);
+    }
+    printf("This is a valid tetro\n");
     return (1);
 }
