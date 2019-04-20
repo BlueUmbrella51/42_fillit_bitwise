@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 16:48:09 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 17:42:29 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 18:14:23 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 //01001 11000 00000 00000 00000
 //01000 1	
 
+#include "fillit.h"
 
-void	ft_to_ll(t_tetro *t)
-{
-	ft_translate_for_map_increase(t, 16, 64);
-}
-
-void	ft_translate_for_map_increase(t_tetro *t, size_t prev_size, size_t size, size_t num_tetros)
+void	ft_translate_for_map_increase(unsigned long long *map, size_t prev_size, size_t size, size_t num_tetros)
 {
 	unsigned long long new;
 	size_t diff;
 	unsigned long long mask;
-	unsigned long long offsetter;
 	size_t offset;
 
 	diff = size - prev_size;
 	offset = (num_tetros * 4 - 1) * diff;
-	new = t->tetro << diff;
+	new = *map << diff;
 	mask = 1 << 0;
 //skip all bits that are 0 and then skip first 1
 	while (offset != diff)
@@ -44,4 +39,27 @@ void	ft_translate_for_map_increase(t_tetro *t, size_t prev_size, size_t size, si
 		new |= mask;
 		offset -= diff;
 	}
+	*map = new;
+}
+
+unsigned long long	tetro_to_ll(t_tetro *t)
+{
+	unsigned long long res;
+	unsigned long long mask;
+	size_t offset;
+
+	res = t->tetro;
+	res <<= 12;
+	offset = 3;
+	mask = 1 << 0;
+	while (offset != 1)
+	{
+		while (mask ^ res)
+			mask <<= 1;
+		res ^= mask;
+		mask >>= offset;
+		res |= mask;
+		offset -= 1;
+	}
+	return (res);
 }
