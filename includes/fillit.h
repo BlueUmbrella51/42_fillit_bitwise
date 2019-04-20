@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 12:05:45 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 13:51:55 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@
 
 typedef struct s_tetro
 {
-    short *tetro;                       // tetro
-    int type;                           // which tetro it is
+    unsigned short tetro;                       // tetro
     int width;                          // total width of tetro
     int height;                         // total height of tetro
-    char print;                         //   
-    void    *next;  
+    char print;
 }              t_tetro;
 
 size_t  find_mapsize(size_t count);

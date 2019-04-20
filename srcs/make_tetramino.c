@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstaddend.c                                     :+:    :+:            */
+/*   make_tetramino.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/25 16:00:42 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 14:12:30 by lravier       ########   odam.nl         */
+/*   Created: 2019/04/20 13:49:09 by lravier       #+#    #+#                 */
+/*   Updated: 2019/04/20 14:16:46 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-
-int		ft_lstaddend(t_list **begin_list, void *content, size_t n)
+int		make_tetramino_lst(unsigned short tetr, size_t count, t_list **lst)
 {
-	t_list *new;
-	t_list *tmp;
+	t_tetro *t;
 
-	tmp = *begin_list;
-	new = ft_lstnew(content, n);
-	if (!new)
-		return(0);
-	if (*begin_list == NULL)
-		*begin_list = new;
-	else
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
+	t = (t_tetro *)malloc(t_tetro);
+	if (!t)
+		return (0);
+	t->tetro = tetr;
+	t->width = 0;
+	t->height = 0;
+	t->print = 'A' + count;
+	t->index = 0;
+	if (!(lst_addend(lst, t)))
+		return (0);
 	return (1);
 }
