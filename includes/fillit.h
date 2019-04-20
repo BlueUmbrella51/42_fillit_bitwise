@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/18 08:39:07 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 11:26:09 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ size_t  find_mapsize(size_t count);
 int     check_read_error(int res, t_list *list);
 size_t  coortoi(int row, int column, size_t size);
 void    itocoor(int *x, int *y, size_t index, size_t size);
-int     tetro_translate(unsigned short *dest);
+void     tetro_translate(unsigned short *tetro, size_t width, size_t total_size);
 int     validate_tetro(unsigned short *tetro);
 void    to_bits(char *s, unsigned short *dst, int iter);
 int     read_input(const int fd, t_list **list, size_t *count);
