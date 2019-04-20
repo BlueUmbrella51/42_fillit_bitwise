@@ -6,11 +6,11 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 13:49:09 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 14:16:46 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 14:37:58 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		make_tetramino_lst(unsigned short tetr, size_t count, t_list **lst)
+int		add_tetro(unsigned short tetr, size_t count, t_list **lst)
 {
 	t_tetro *t;
 
