@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/18 10:34:18 by lravier       ########   odam.nl          #
+#    Updated: 2019/04/20 12:03:22 by lravier       ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -30,7 +30,7 @@ OBJDIR = objs
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJ))
 
-HEADER = -I includes
+HEADER = -I includes/ -I libft/includes/
 cc = gcc
 CFLAGS = -Wall -Wextra -Werror
 LIB = -L libft/ -lft
