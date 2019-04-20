@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 13:00:45 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/04/20 11:59:33 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/19 13:01:07 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void        to_bits(char *s, unsigned short *dst, int iter)
     unsigned short res;
     int len;
 
-    len = ft_strlen(s);
+    len = strlen(s);
     i = 0;
     res = 0;
     while (s[i] != '\0')
