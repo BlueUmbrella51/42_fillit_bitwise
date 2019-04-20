@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 14:58:50 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 14:54:39 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_tetro
     unsigned short tetro;                       // tetro
     int width;                          // total width of tetro
     int height;                         // total height of tetro
-	size_t index;
     char print;
 }              t_tetro;
 

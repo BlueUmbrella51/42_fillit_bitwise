@@ -6,15 +6,17 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 13:49:09 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 14:37:58 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 14:59:19 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
 
 int		add_tetro(unsigned short tetr, size_t count, t_list **lst)
 {
 	t_tetro *t;
 
-	t = (t_tetro *)malloc(t_tetro);
+	t = (t_tetro *)malloc(sizeof(t_tetro));
 	if (!t)
 		return (0);
 	t->tetro = tetr;
