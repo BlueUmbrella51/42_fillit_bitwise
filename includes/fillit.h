@@ -6,12 +6,13 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 11:26:09 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/20 11:32:08 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
+# define SIZE = 4
 
 #   include "get_next_line.h"
 #   include "libft.h"
