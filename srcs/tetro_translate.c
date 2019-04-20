@@ -6,18 +6,17 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 10:35:17 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 10:50:01 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 11:34:01 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	get_mask(unsigned short *top_row, unsigned short *left_col,
-size_t width, size_t total_size)
+void	get_mask(unsigned short *top_row, unsigned short *left_col, size_t total_size)
 {
 	size_t i;
 
-	i = total_size - width;
+	i = total_size - SIZE;
 	while (i < total_size)
 	{
 		*top_row |=  1 << i;
@@ -27,20 +26,20 @@ size_t width, size_t total_size)
 	while (i < total_size)
 	{
 		*left_col |= 1 << i;
-		i += width;
+		i += SIZE;
 	}
 }
 
-void tetro_translate (unsigned short *tetro, size_t width, size_t total_size)
+void tetro_translate (unsigned short *tetro, size_t total_size)
 {
 	unsigned short top_row;
 	unsigned short left_col;
 
 	top_row = 0;
 	left_col = 0;
-	get_mask(&top_row, &left_col, width, total_size);
+	get_mask(&top_row, &left_col, total_size);
 	while ((*tetro & top_row) == 0)
-		*tetro <<= width;
+		*tetro <<= SIZE;
 	while ((*tetro & left_col) == 0)
 		*tetro <<= 1;
 }
