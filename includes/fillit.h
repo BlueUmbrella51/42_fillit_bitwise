@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 13:51:55 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 14:46:17 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void    tetro_translate(unsigned short *tetro, size_t total_size);
 int     validate_tetro(unsigned short *tetro);
 void    to_bits(char *s, unsigned short *dst, int iter);
 int     read_input(const int fd, t_list **list, size_t *count);
-
+int		add_tetro(unsigned short tetr, size_t count, t_list **lst);
 #endif

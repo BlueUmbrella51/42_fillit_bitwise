@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 10:35:17 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 12:07:08 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 14:45:15 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ int    read_input(const int fd, t_list **list, size_t *count)
         while (i < 4)
         {
             r = get_next_line(fd, &line);
-            if (r == -1)
-                return (-1);
-            if (r == 0)
-                return (0);
+            if (r <= 0)
+                return (r);
             ft_putendl(line);
             if (ft_strlen(line) == 4)
                 to_bits(line, &dest, i);
@@ -51,7 +49,7 @@ int    read_input(const int fd, t_list **list, size_t *count)
         if (validate_tetro(&dest) == 1)
         {
             tetro_translate(&dest, total_size);
-            ft_lstpushfront(&dest, list, 1);
+            add_tetro(dest, *count, list);
         }
         else
             return (-4);
