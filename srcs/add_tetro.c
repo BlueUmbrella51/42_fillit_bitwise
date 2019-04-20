@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 13:49:09 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 14:59:19 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 15:00:34 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst)
 	t->height = 0;
 	t->print = 'A' + count;
 	t->index = 0;
-	if (!(lst_addend(lst, t)))
+	if (!(ft_lstaddend(lst, t, sizeof(t))))
 		return (0);
 	return (1);
 }

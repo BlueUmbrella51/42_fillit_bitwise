@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 10:35:17 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 14:55:55 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 14:57:52 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int    read_input(const int fd, t_list **list, size_t *count)
         {
             tetro_translate(&dest, total_size);
             add_tetro(dest, *count, list);
-			print_tetro((t_list*)list->content->tetro);
+			print_tetro(&((t_tetro *)((t_list*)list)->content)->tetro, SIZE);
         }
         else
             return (-4);
