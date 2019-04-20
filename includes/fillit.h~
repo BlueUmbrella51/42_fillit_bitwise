@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 12:05:45 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 12:01:30 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define SIZE 4
 
 # include "get_next_line.h"
-# include "../libft/includes/libft.h"
+# includes "libft.h"
 #include <stdio.h>                      // DONT FORGET TO REMOVE THIS INCLUDE
 
 typedef struct s_tetro
