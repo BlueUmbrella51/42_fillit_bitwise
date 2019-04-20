@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 10:35:17 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/18 11:34:27 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/20 10:45:37 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,8 @@ int    read_input(const int fd, t_list **list, size_t *count)
         printf("the current tetro in binary == %s\n", ft_itoa_base(dest, 2));                                              
         if (validate_tetro(&dest) == 1)
         {
-            if(tetro_translate(&dest) == 1)
-                ft_lstpushfront(&dest, list, 1);
-            else
-                return (-3);
+            tetro_translate(&dest, 4, 16);
+            ft_lstpushfront(&dest, list, 1);
         }
         else
             return (-4);
