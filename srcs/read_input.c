@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 10:35:17 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 15:09:24 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/21 10:49:49 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int    read_input(const int fd, t_list **list, size_t *count)
     char *line;
 
 	total_size = SIZE * SIZE;
-    dest = 0;
+    dest = 0U;
     r = 1;
     while(r == 1)
     {
@@ -49,8 +49,13 @@ int    read_input(const int fd, t_list **list, size_t *count)
         if (validate_tetro(&dest) == 1)
         {
             tetro_translate(&dest, total_size);
+	        printf("The current tetro absolute == %u\n", dest);
 			print_tetro(&dest, total_size);
-            add_tetro(dest, *count, list);
+            add_tetro(dest, *count, list, total_size);
+	        printf("The current tetro in list == %u\n", ((t_tetro *)((t_list *)*list)->content)->tetro);
+//			tetro_to_ll(list->content);
+			unsigned long long t = tetro_to_ll(((t_list *)*list)->content);
+			printf("TETRO AS LONG %llu", t);
         }
         else
             return (-4);

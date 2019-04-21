@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/20 14:53:19 by lravier       ########   odam.nl          #
+#    Updated: 2019/04/21 14:37:57 by lravier       ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,9 @@ SRC =	coortoi.c			\
 		check_read_error.c	\
 		find_mapsize.c		\
 		add_tetro.c			\
-		print_tetro.c
+		print_tetro.c		\
+		translate_for_map_increase.c \
+		tetro_wh.c
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs

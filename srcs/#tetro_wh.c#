@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   make_tetramino.c                                   :+:    :+:            */
+/*   tetro_width_height.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/20 13:49:09 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 15:21:05 by lravier       ########   odam.nl         */
+/*   Created: 2019/04/20 12:24:17 by lravier       #+#    #+#                 */
+/*   Updated: 2019/04/20 16:11:49 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_size)
+void	tetro_wh(t_tetro *tetro, size_t total_size)
 {
-	t_tetro *t;
+	unsigned short mask_row;
+	unsigned short mask_col;
+	unsigned shor t;
 
-	t = (t_tetro *)malloc(sizeof(t_tetro));
-	if (!t)
-		return (0);
-	t->tetro = tetr;
-	t->print = 'A' + count;
-	t->index = 0;
-	t->width = 0;
-	t->height = 0;
-	tetro_wh(t, total_size);
-	if (!(ft_lstaddend(lst, t, sizeof(t))))
-		return (0);
-	return (1);
+	if (
+}
+
+
+
+
+	mask_left = 1 << (total_size - SIZE - 1);
+	if (~(mask_top & 1 << (SIZE * (SIZE - 1) - 1)))
+	{
+		if (tetro->tetro & mask_top)
+			tetro->width += 1;
+		while (tetro->tetro & mask_left)
+		{
+			tetro->height += 1;
+			mask_left = 1 << (total_size - SIZE - 1);
+		}
+		tetro_wh(tetro, total_size - 1);
+	}
 }
