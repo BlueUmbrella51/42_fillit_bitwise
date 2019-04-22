@@ -1,0 +1,93 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   tetrominos_setup.c                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/04/22 13:23:50 by lravier       #+#    #+#                 */
+/*   Updated: 2019/04/22 13:38:59 by lravier       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fillit.h"
+
+static void	find_first(t_tetro *t)
+{
+	unsigned short mask;
+	size_t i;
+
+	i = 0;
+	mask = 1U;
+	while ((mask & t->tetro) == 0)
+	{
+		mask = mask << 1;
+		i++;
+	}
+	t->index = i;
+}
+
+static int		is_smashboy(unsigned short tetro)
+{
+	unsigned short mask;
+	mask = 52224;
+	if ((tetro ^ mask) == 0)
+		return (1);
+	return (0);
+}
+
+int	tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, size_t index)
+{
+	unsigned short prev_visited;
+	size_t total_size;
+	
+	total_size = SIZE * SIZE;
+	if ((mask & t->tetro) != 0 && (*visited & mask) == 0)
+	{
+		prev_visited = *visited;
+		*visited |= mask;
+		if (count_ones(visited) == 4 && (prev_visited ^ *visited) == 0)
+			return (0);
+		if (index < total_size - SIZE && (*visited & (mask << SIZE)) == 0)
+			t->height += tetro_wh(t, mask << SIZE, visited, index + SIZE);
+		if (index >= SIZE && (*visited & (mask >> SIZE)) == 0)
+			t->height += tetro_wh(t, mask >> SIZE, visited, index - SIZE);
+		if (index % SIZE != 0 && (*visited & (mask >> 1)) == 0)
+			t->width += tetro_wh(t, mask >> 1, visited, index - 1);
+		if ((index + 1) % SIZE != 0 && (*visited & (mask << 1)) == 0)
+			t->width += tetro_wh(t, mask << 1, visited, index + 1);
+		return (1);
+	}
+	return (0);
+}
+
+int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_size)
+{
+	t_tetro *t;
+	unsigned short mask;
+	unsigned short visited;
+
+	visited = 0;
+	t = (t_tetro *)malloc(sizeof(t_tetro));
+	if (!t)
+		return (0);
+	t->tetro = tetr;
+	t->print = 'A' + count;
+	find_first(t);
+	mask = (1 << t->index);
+	t->width = 1;
+	t->height = 1;
+	total_size = SIZE * SIZE;
+	if (is_smashboy(t->tetro))
+	{
+		t->width = SIZE / 2;
+		t->height = SIZE / 2;
+	}
+	else
+		tetro_wh(t, mask, &visited, t->index);
+	printf("ADD TETRO WIDTH %d\n", t->width);
+	printf("ADD TETRO HEIGHT %d\n", t->height);
+	if (!(ft_lstaddend(lst, t, sizeof(t))))
+		return (0);
+	return (1);
+}
