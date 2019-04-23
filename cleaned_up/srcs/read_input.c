@@ -61,7 +61,7 @@ int		read_input(int fd, t_list **list, size_t *count)
 		if (test != 1)
 			return (test);
 		*count += 1;
-		print_tetro(&dst, 16);
+//		print_tetro(&dst, 16);
 		if (validate_tetro(&dst, total_size))
 		{
 			tetro_translate(&dst, total_size);

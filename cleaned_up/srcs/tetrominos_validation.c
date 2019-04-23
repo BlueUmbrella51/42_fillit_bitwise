@@ -34,17 +34,14 @@ int	check_connections(size_t index, size_t total_size, unsigned short *tetro)
 
 	count = 0;
 	i = index - 1;
-	printf("INDEX: %zu\n", i);
-	print_tetro(tetro, 16);
-	printf("\n");
-	if (!((i + 1) % SIZE == 0))		//right border
-	{
-		if (*tetro & (1 << (i - 1)))
-			count++;
-	}
-	if (!(i % SIZE == 0))		//left border
+	if (!((i + 1) % SIZE == 0))		//left border
 	{
 		if (*tetro & (1 << (i + 1)))
+			count++;
+	}
+	if (!(i % SIZE == 0))		//right border
+	{
+		if (*tetro & (1 << (i - 1)))
 			count++;
 	}
 	if (i < total_size - SIZE)		//top border
@@ -57,6 +54,7 @@ int	check_connections(size_t index, size_t total_size, unsigned short *tetro)
 		if (*tetro & (1 << (i - SIZE)))
 			count++;
 	}
+	ft_putchar('\n');
 	return (count);
 }
 
@@ -68,7 +66,7 @@ int		check_edges(unsigned short *tetro, size_t total_size)
 
 	mask = 1U;
 	edges = 0;
-	i = 0;
+	i = 1;
 	while (i <= total_size)
 	{
 		if (mask & *tetro)
@@ -76,7 +74,6 @@ int		check_edges(unsigned short *tetro, size_t total_size)
 		mask = (1 << i);
 		i++;
 	}
-	printf("\nEDGES%i\n", edges);
 	if (edges > 5)
 		return (1);
 	return (0);
