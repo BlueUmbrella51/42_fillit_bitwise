@@ -1,0 +1,107 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   print_solution.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/04/23 09:45:04 by lravier       #+#    #+#                 */
+/*   Updated: 2019/04/23 11:42:29 by lravier       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fillit.h"
+
+int		is_tetromino_at_index(t_list *t, size_t id)
+{
+	if (((t_tetro *)((t_list*)t)->content)->index == id)
+		return (1);
+	return (0);
+}
+
+t_list	*ft_lstsearch(t_list **lst, t_list *(*find)(t_list *, void *), void *key)
+{
+	t_list *curr;
+
+	curr = *lst;
+	while (curr)
+	{
+		if (find(curr, key))
+			return (curr);
+		curr = curr->next;
+	}
+	return (NULL);
+}
+
+void	find_tetromino(size_t index, unsigned long long *mask, char *c, t_list **lst)
+{
+	t_tetro *curr;
+
+	curr = ft_lstsearch(lst, &is_tetromino_at_index, index);
+	if (!curr)
+		return(ft_error("Something went wrong printing the solution"));
+	*mask = ((t_tetro *)((t_list*)t)->content)->tetro;
+	*c = ((t_tetro *)((t_list*)t)->content)->print;
+}
+
+void	initialize_array(char **map, size_t size)
+{
+	size_t i;
+
+	i = 0;
+	*map = (char *)malloc(size * sizeof(char *));
+	while (i < size)
+	{
+		map[i] = ft_strnew(size);
+		i++;
+	}
+}
+
+void	place_char(char **map, size_t index, char c)
+{
+	int x;
+	int y;
+
+	itocoor(&x, &y, index);
+	map[x][y] = c;
+}
+
+void	print_solution(unsigned long long solution, t_list **lst, size_t map_size)
+{
+	size_t i;
+	size_t j;
+	char c;
+	char *map;
+	unsigned long long tetro;
+	unsigned long long mask;
+
+	mask = 1;
+	i = 0;
+	c = '.';
+	initialize_array(&map);
+	while (i < map_size)
+	{
+		while (i < SIZE)
+		{
+			if ((solution & mask) == 0)
+				place_char(&map, i, c);
+			else
+			{
+				find_tetromino(i, &tetro, &c, lst);
+				while (j + i < 64)
+				{
+					if (mask & tetro)
+						place_char(c);
+					j++;
+					mask = (1 << j);
+					//delete tetromino from list?
+				}
+			}
+			i++;
+			c = '.';
+			mask = (1 << i);
+		}
+		ft_putchar('\n');
+		i++;
+	}
+}

@@ -41,23 +41,23 @@ int	check_connections(size_t index, size_t total_size, unsigned short *tetro)
 	}
 	if (!(i % SIZE == 0))		//rigth border
 	{
-		if (*tetro & (1 << (i - 1)))
+		if (*tetro & (1 << i - 1))
 			count++;
 	}
 	if (i < total_size - SIZE)		//top border
 	{
-		if (*tetro & (1 << (SIZE + i)))
+		if (*tetro & (1 << SIZE + i))
 			count++;
 	}
-	if (i >= SIZE)				//bottom_border
+	if (i >= SIZE)
 	{
-		if (*tetro & (1 << (i - SIZE)))
+		if (*tetro & (1 << i - SIZE))
 			count++;
 	}
 	return (count);
 }
 
-int		check_edges(unsigned short *tetro, size_t total_size)
+int		check_edges(unsigned short *tetro, size_t total_size, size_t width)
 {
 	unsigned short mask;
 	size_t i;
@@ -69,7 +69,7 @@ int		check_edges(unsigned short *tetro, size_t total_size)
 	while (i < total_size)
 	{
 		if (mask & *tetro)
-			edges += check_connections(i, total_size, tetro);
+			edges += check_connections(i, width);
 		mask = 1 << i;
 		i++;
 	}

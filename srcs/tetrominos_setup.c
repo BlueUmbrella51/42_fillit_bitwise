@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   make_tetramino.c                                   :+:    :+:            */
+/*   tetrominos_setup.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/20 13:49:09 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/20 17:52:02 by lravier       ########   odam.nl         */
+/*   Created: 2019/04/22 13:23:50 by lravier       #+#    #+#                 */
+/*   Updated: 2019/04/22 13:26:24 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,32 @@ static int		is_smashboy(unsigned short tetro)
 	print_tetro(&mask, 16);
 	if ((tetro ^ mask) == 0)
 		return (1);
+	return (0);
+}
+
+
+int	tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, size_t index)
+{
+	unsigned short prev_visited;
+	size_t total_size;
+
+	total_size = SIZE * SIZE;
+	if ((mask & t->tetro) != 0 && (*visited & mask) == 0)
+	{
+		prev_visited = *visited;
+		*visited |= mask;
+		if (count_ones(*visited) == 4 && (prev_visited ^ *visited) == 0)
+			return (0);
+		if (index < total_size - SIZE && (*visited & (mask << SIZE)) == 0)
+			t->height += tetro_wh(t, mask << SIZE, visited, index + SIZE);
+		if (index >= SIZE && (*visited & (mask >> SIZE)) == 0)
+			t->height += tetro_wh(t, mask >> SIZE, visited, index - SIZE);
+		if (index % SIZE != 0 && (*visited & (mask >> 1)) == 0)
+			t->width += tetro_wh(t, mask >> 1, visited, index - 1);
+		if ((index + 1) % SIZE != 0 && (*visited & (mask << 1)) == 0)
+			t->width += tetro_wh(t, mask << 1, visited, index + 1);
+		return (1);
+	}
 	return (0);
 }
 

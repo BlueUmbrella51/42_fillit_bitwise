@@ -19,6 +19,10 @@ int	main(int argc, char *argv[])
 	int res;
 	size_t count;
 
+	char **test;
+	test = initialize_array(6);
+	test[0][0] = 'a';
+	printf("%s", *test);
 	count = 0;
 	if (argc != 2)			//do we handle more than 1 file ever??
 		return (ft_error("Invalid number of input files"));

@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/21 14:37:57 by lravier       ########   odam.nl          #
+#    Updated: 2019/04/22 12:52:39 by lravier       ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -53,8 +53,8 @@ $(OBJS): $(SRCS)
 	/bin/mv $(OBJ) $(OBJDIR)/
 
 clean:
-	/bin/rm -rf $(OBJDIR)
-
+	/bin/rm -Rf $(OBJDIR)
+	/bin/rm -Rf *~
 fclean: clean
 	/bin/rm -f $(NAME)
 

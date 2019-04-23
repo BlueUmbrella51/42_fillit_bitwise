@@ -72,7 +72,7 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	if (!t)
 		return (0);
 	t->tetro = tetr;
-	t->print = 'A' + count;
+	t->print = 'A' + (count - 1);
 	find_first(t);
 	mask = (1 << t->index);
 	t->width = 1;
@@ -85,8 +85,6 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	}
 	else
 		tetro_wh(t, mask, &visited, t->index);
-	printf("ADD TETRO WIDTH %d\n", t->width);
-	printf("ADD TETRO HEIGHT %d\n", t->height);
 	if (!(ft_lstaddend(lst, t, sizeof(t))))
 		return (0);
 	return (1);

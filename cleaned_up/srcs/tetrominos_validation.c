@@ -54,7 +54,6 @@ int	check_connections(size_t index, size_t total_size, unsigned short *tetro)
 		if (*tetro & (1 << (i - SIZE)))
 			count++;
 	}
-	ft_putchar('\n');
 	return (count);
 }
 

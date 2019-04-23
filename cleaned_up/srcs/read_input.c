@@ -65,7 +65,6 @@ int		read_input(int fd, t_list **list, size_t *count)
 		if (validate_tetro(&dst, total_size))
 		{
 			tetro_translate(&dst, total_size);
-			//check if properly added!!
 			if (!add_tetro(dst, *count, list, total_size))
 				return (ft_error("Something went wrong while creating the list"));
 		}
@@ -73,8 +72,10 @@ int		read_input(int fd, t_list **list, size_t *count)
 			return(ft_error("Invalid tetromino found"));
 		dst = 0;
 		lr = get_next_line(fd, &line);
-		if (lr <= 0)
+		if (lr < 0)
 			return(ft_error("Error reading"));
+		if (lr == 0)
+			return (0);
 		if (!(line[0] == '\n' || line[0] == '\0'))
 			return (ft_error("Unexpected character encountered"));
 	}

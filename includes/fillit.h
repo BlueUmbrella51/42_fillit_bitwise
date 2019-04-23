@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/21 14:40:21 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/22 09:29:16 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ void	print_tetro(unsigned short *dest, size_t size);
 void	ft_translate_to_map_increase(t_tetro *t, size_t prev_size, size_t size,
 size_t num_tetros);
 unsigned long long tetro_to_ll(t_tetro *t);
-int		tetro_wh(t_tetro* t, unsigned short tetr, size_t total_size);
+int		tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, size_t total_size, size_t index);
 #endif

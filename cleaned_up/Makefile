@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/22 14:52:18 by lravier       ########   odam.nl          #
+#    Updated: 2019/04/23 16:51:35 by lravier       ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,8 @@ SRC =	tetrominos_validation.c	\
 		fillit_utility.c		\
 		ft_error.c				\
 		read_input.c			\
-		main.c
+		main.c					\
+		print_solution.c
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs
@@ -48,7 +49,7 @@ $(OBJS): $(SRCS)
 
 clean:
 	/bin/rm -Rf $(OBJDIR)
-	/bin/rm -Rf *~
+	/bin/rm -Rf *~ *#
 fclean: clean
 	/bin/rm -f $(NAME)
 

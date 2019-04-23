@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/22 14:48:39 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/23 16:56:52 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ int		ft_error(char *s);
 int     validate_tetro(unsigned short *tetro, size_t total_size);
 int     read_tetromino(int *lr, int fd, char **line, unsigned short *dst);
 int     read_input(int fd, t_list **list, size_t *count);
+
+/** IN PRINT_SOLUTION **/
+int 	find_tetromino(size_t index, unsigned long long *mask, char *c, t_list **lst);
+void	place_char(char **map, size_t index, char c, size_t total_size);
+void	print_solution(unsigned long long solution, t_list **lst, size_t map_size);
+void	place_tetromino(char **map, size_t totalsize, size_t index, t_list **lst,
+unsigned long long *solution);
+char		**initialize_array(size_t size);
 
 /*
 int     check_read_error(int res, t_list *list);
