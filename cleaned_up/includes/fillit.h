@@ -23,6 +23,7 @@ typedef struct s_tetro
     unsigned short tetro;                       // tetro
     int width;                          // total width of tetro
     int height;                         // total height of tetro
+    int used;
 	size_t index;
     char print;
 }              t_tetro;
@@ -30,7 +31,7 @@ typedef struct s_tetro
 /** IN TETROMINOS SETUP **/
 int		add_tetro(unsigned short tetr, size_t count, t_list **lst,
 size_t total_size);
-int		tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited,
+int		tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, unsigned short tetr,
 size_t index);
 
 /** IN TETRAMINOS VALIDATION **/

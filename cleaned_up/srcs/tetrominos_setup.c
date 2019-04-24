@@ -36,26 +36,26 @@ static int		is_smashboy(unsigned short tetro)
 	return (0);
 }
 
-int	tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, size_t index)
+int	tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, unsigned short tetr, size_t index)
 {
 	unsigned short prev_visited;
 	size_t total_size;
 	
 	total_size = SIZE * SIZE;
-	if ((mask & t->tetro) != 0 && (*visited & mask) == 0)
+	if ((mask & tetr) != 0 && (*visited & mask) == 0)
 	{
 		prev_visited = *visited;
 		*visited |= mask;
 		if (count_ones(visited) == 4 && (prev_visited ^ *visited) == 0)
 			return (0);
 		if (index < total_size - SIZE && (*visited & (mask << SIZE)) == 0)
-			t->height += tetro_wh(t, mask << SIZE, visited, index + SIZE);
+			t->height += tetro_wh(t, mask << SIZE, visited, tetr, index + SIZE);
 		if (index >= SIZE && (*visited & (mask >> SIZE)) == 0)
-			t->height += tetro_wh(t, mask >> SIZE, visited, index - SIZE);
+			t->height += tetro_wh(t, mask >> SIZE, visited,  tetr, index - SIZE);
 		if (index % SIZE != 0 && (*visited & (mask >> 1)) == 0)
-			t->width += tetro_wh(t, mask >> 1, visited, index - 1);
+			t->width += tetro_wh(t, mask >> 1, visited, tetr, index - 1);
 		if ((index + 1) % SIZE != 0 && (*visited & (mask << 1)) == 0)
-			t->width += tetro_wh(t, mask << 1, visited, index + 1);
+			t->width += tetro_wh(t, mask << 1, visited, tetr, index + 1);
 		return (1);
 	}
 	return (0);
@@ -77,14 +77,15 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	mask = (1 << t->index);
 	t->width = 1;
 	t->height = 1;
+	t->used = 0;
 	total_size = SIZE * SIZE;
-	if (is_smashboy(t->tetro))
+	if (is_smashboy(tetr))
 	{
 		t->width = SIZE / 2;
 		t->height = SIZE / 2;
 	}
 	else
-		tetro_wh(t, mask, &visited, t->index);
+		tetro_wh(t, mask, &visited, tetr, t->index);
 	if (!(ft_lstaddend(lst, t, sizeof(t))))
 		return (0);
 	return (1);
