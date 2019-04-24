@@ -28,11 +28,13 @@ void	itocoor(int *x, int *y, size_t index, size_t size)
 
 size_t min_mapsize(size_t count)
 {
-	if (count == 0)
-		return (0);
-    while (ft_sqrt(count * 4) == 0)
-        count--;
-    return (count * 4);
+    size_t i;
+
+    count *= 4;
+    i = 0;
+    while (i * i < count)
+        i++;
+    return (i);
 }
 
 void    print_tetro( unsigned short *dest, size_t size)
