@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/23 16:51:35 by lravier       ########   odam.nl          #
+#    Updated: 2019/04/25 12:42:57 by jdunnink      ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,7 +19,14 @@ SRC =	tetrominos_validation.c	\
 		ft_error.c				\
 		read_input.c			\
 		main.c					\
-		print_solution.c
+		print_solution.c		\
+		toggle_bit.c			\
+		create_field.c			\
+		print_part_field.c		\
+		print_field.c			\
+		add_bits.c				\
+		move_bit.c				\
+		move_bits.c				\
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs

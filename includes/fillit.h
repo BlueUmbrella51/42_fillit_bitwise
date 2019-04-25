@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/23 16:56:52 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/25 12:49:06 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,34 @@ typedef struct s_field                                                          
 
 typedef struct s_tetro
 {
-    unsigned short tetro;                       // tetro
-    int width;                          // total width of tetro
-    int height;                         // total height of tetro
+    unsigned short tetro;
+    int width;
+    int height;
     int used;
-	size_t index;
+    size_t index;
     char print;
 }              t_tetro;
 
+typedef struct s_tetro_new
+{
+    unsigned short tetro;
+    int width;
+    int height;
+    int used;
+    size_t index1;                      // index of the first tetro block
+    size_t index2;                      // index of the second tetro block
+    size_t index3;                      // index of the third tetro block
+    size_t index4;                      // indexx of the fourth tetro block
+    char print;
+}              t_tetro_new;
+
+/** BIT MOVEMENT **/
+void toggle_bit(size_t index, size_t size, t_field *field);      // flip a bit within a field on or off
+void move_bit(size_t index, size_t new_index, t_field *field);  // move one bit in a field
+void move_bits(t_tetro_new tetro, int move_height, int move_width, t_field *field); // move tetro blocks
+void add_bits(t_tetro_new tetro, t_field *field);       // add tetro blocks to field
+
+/** FIELD FUNCTIONS **/
 void print_part_field(unsigned long long part_field, size_t size); // print 1/4th of a complete field
 void    print_field(t_field field);                                 // print a complete field
 t_field create_field(size_t total_size);                             // create a new field
