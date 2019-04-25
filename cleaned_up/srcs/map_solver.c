@@ -15,41 +15,41 @@ int count_longs(unsigned long long *tetro)
     return (count);
 }
 
-static void	get_border(unsigned long long *border, size_t size)
-{
-	size_t i;
-    size_t total_size;
-
-	i = 0;
-    total_size = size * size;
-	while (i < total_size)
-	{
-		*border |= (1 << i);
-		i += size + 1;
-	}
-}
-
 int check_fit(unsigned long long *map, t_list *tetro, size_t size)
 {
     size_t i;
-    unsigned long long mask;
     unsigned long long t;
+    unsigned long long border;
 
-    mask = 0ULL;
+    get_border(&border, size);
     t = tetro_to_ll(((t_list *)tetro)->content);
+    printf("%llu\n", t);
     i = 0;
-    get_border(&mask, size);
-    printf("BORDER: %llu\n", mask);
     while (i < size)
     {
-        if ((*map & t) == 0)
+        if ((*map & t) == 0) 
         {
             ((t_tetro *)((t_list *)tetro)->content)->index = i;
             *map |= t;
             printf("MAP: %llu\nINDEX: %zu\n", *map, i);
             return (1);
         }
-        t >>= 1;
+        else 
+        {
+            if (((t >> 1) & border) == 0)
+            {
+                t >>= 1;
+                i++;
+            }
+            else if (((t >> size) & border) == 0)
+            {
+                t >>= size;
+                i += size;
+            }
+
+            else 
+                return (0);
+        }
         printf("TETRO: %llu\n", t);
         i++;
     }
@@ -70,7 +70,7 @@ int solve_map(unsigned long long *map, t_list **lst, size_t map_size, size_t num
                 return (1);
         *map ^= tetro_to_ll(((t_list *)curr)->content);
         curr = curr->next;
-//        exit(0);
+        exit(0);
     }
     return (0);
 }
