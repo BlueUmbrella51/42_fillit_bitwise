@@ -12,6 +12,17 @@
 
 #include "fillit.h"
 
+int is_one(unsigned long long test, size_t index)
+{
+    unsigned long long mask;
+
+    mask = (1ULL << 63);
+    mask >>= index;
+    if (mask & test)
+        return (1);
+    return (0); 
+}
+
 size_t	coortoi(int row, int column, size_t size)
 {
 	size_t index;
