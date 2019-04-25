@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 16:52:00 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/04/25 17:26:22 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 17:45:53 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int solve_pos(t_field *map, t_tetro *tetro)
     t_field tmp;
 
     tmp = create_field(256);
+	print_tetro(&tetro->tetro, 16);
     toggle_bits(*tetro, &tmp);
+	print_field(tmp);
     while (check_fit_field(*map, tmp) == 0)
     {
         toggle_bits(*tetro, &tmp);
@@ -99,5 +101,6 @@ int solver(t_field *field, size_t num_tetros, t_list **tetros)
         reset_field(field);
         size++;
     }
+    print_field(*field);
     return (0);
 }

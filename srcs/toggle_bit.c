@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 11:40:27 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/04/25 11:40:47 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 17:37:15 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void toggle_bit(size_t index, size_t size, t_field *field)      // flip a bit wi
         tmp >>= 1;
         x--;
     }
-    print_part_field(tmp, 64);
     itocoor(&x, &y, index, ft_sqrt(size));
     if (y <= 7 && x <= 7)
         field->top_left = field->top_left ^ tmp;

@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 13:23:50 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/25 17:09:49 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 17:44:05 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	t->width = 1;
 	t->height = 1;
 	t->used = 0;
+	t->og_index1 = 1;
+	t->pl_index1 = 1;
 	total_size = SIZE * SIZE;
 	if (is_smashboy(tetr))
 	{
