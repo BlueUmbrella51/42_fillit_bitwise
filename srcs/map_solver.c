@@ -96,14 +96,6 @@ int solve_map(t_field *field, t_list **lst, size_t map_size, size_t num_tetros)
     return (0);
 }
 
-void    reset_field(t_field *field)
-{
-    field->top_left = 0ULL;
-    field->bot_left = 0ULL;
-    field->top_right = 0ULL;
-    field->bot_right = 0ULL;
-}
-
 int solver(t_field *field, size_t num_tetros, t_list **tetros)
 {
     size_t size;

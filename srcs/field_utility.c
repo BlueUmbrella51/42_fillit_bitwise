@@ -80,3 +80,11 @@ int count_field(t_field *field, size_t width)
     }
     return (res);
 }
+
+void    reset_field(t_field *field)
+{
+    field->top_left = 0ULL;
+    field->bot_left = 0ULL;
+    field->top_right = 0ULL;
+    field->bot_right = 0ULL;
+}

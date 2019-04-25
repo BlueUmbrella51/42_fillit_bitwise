@@ -110,6 +110,7 @@ void    reset_field(t_field *field);
 int     count_field(t_field *field, size_t width);
 void    convert_index(size_t *x, size_t *y);
 int     get_quadrant(size_t x, size_t y);
+void    reset_field(t_field *field);
 /*
 int     check_read_error(int res, t_list *list);
 int     validate_tetro(unsigned short *tetro);
