@@ -85,6 +85,7 @@ size_t  coortoi(int row, int column, size_t size);
 void    itocoor(int *x, int *y, size_t index, size_t size);
 size_t  min_mapsize(size_t count);
 void	print_tetro(unsigned short *dest, size_t size);
+int     is_one(size_t index, unsigned long long test);
 
 /** OTHER **/
 int		ft_error(char *s);
@@ -100,8 +101,15 @@ void	place_char(char **map, size_t index, char c, size_t total_size);
 void	print_solution(unsigned long long solution, t_list **lst, size_t map_size);
 void	place_tetromino(char **map, size_t totalsize, size_t index, t_list **lst,
 unsigned long long *solution);
-char		**initialize_array(size_t size);
+char	**initialize_array(size_t size);
 
+/** IN MAP_SOLVER **/
+void    reset_field(t_field *field);
+
+/** IN FIELD_UTILITY **/
+int     count_field(t_field *field, size_t width);
+void    convert_index(size_t *x, size_t *y);
+int     get_quadrant(size_t x, size_t y);
 /*
 int     check_read_error(int res, t_list *list);
 int     validate_tetro(unsigned short *tetro);

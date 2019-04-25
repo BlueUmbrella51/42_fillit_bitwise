@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int is_one(unsigned long long test, size_t index)
+int is_one(size_t index, unsigned long long test)
 {
     unsigned long long mask;
 
