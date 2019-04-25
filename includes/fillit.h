@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/25 12:49:06 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 16:53:38 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libft/includes/libft.h"
 #include <stdio.h>                      // DONT FORGET TO REMOVE THIS INCLUDE
 
-typedef struct s_field                                                           // field struct consisting of 4 partial fields
+typedef struct s_field
 {
     unsigned long long top_left;
     unsigned long long top_right;
@@ -33,22 +33,16 @@ typedef struct s_tetro
     int width;
     int height;
     int used;
-    size_t index;
+    size_t og_index1;                      // index of the first tetro block
+    size_t pl_index1;                      // where the block is placed in the field
+    size_t og_index2;                      // index of the second tetro block
+    size_t pl_index2;                      // where the block is placed in the field
+    size_t og_index3;                      // index of the third tetro block
+    size_t pl_index3;                      // where the block is placed in the field
+    size_t og_index4;                      // indexx of the fourth tetro block
+    size_t pl_index4;                      // where the block is placed in the field
     char print;
 }              t_tetro;
-
-typedef struct s_tetro_new
-{
-    unsigned short tetro;
-    int width;
-    int height;
-    int used;
-    size_t index1;                      // index of the first tetro block
-    size_t index2;                      // index of the second tetro block
-    size_t index3;                      // index of the third tetro block
-    size_t index4;                      // indexx of the fourth tetro block
-    char print;
-}              t_tetro_new;
 
 /** BIT MOVEMENT **/
 void toggle_bit(size_t index, size_t size, t_field *field);      // flip a bit within a field on or off
