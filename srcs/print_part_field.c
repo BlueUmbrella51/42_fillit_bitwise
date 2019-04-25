@@ -1,49 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   fillit_utility.c                                   :+:    :+:            */
+/*   print_part_field.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/22 13:29:05 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/22 13:31:08 by lravier       ########   odam.nl         */
+/*   Created: 2019/04/25 09:19:46 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/04/25 09:19:47 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-size_t	coortoi(int row, int column, size_t size)
+void print_part_field(unsigned long long part_field, size_t size)           // print a partial field
 {
-	size_t index;
-
-	index = row * size + column;
-	return (index);
-}
-
-void	itocoor(int *x, int *y, size_t index, size_t size)
-{
-	*x = index % size;
-	*y = index / size;
-}
-
-size_t min_mapsize(size_t count)
-{
-    size_t i;
-
-    count *= 4;
-    i = 0;
-    while (i * i < count)
-        i++;
-    return (i);
-}
-
-void    print_tetro( unsigned short *dest, size_t size)
-{
-    unsigned short tmp;
+    unsigned long long tmp;
     size_t width;
 
     width = ft_sqrt(size);
-    tmp = *dest;
+    tmp = part_field;
+
     while (size)
     {
         tmp = tmp >> (size - 1);
@@ -52,7 +28,7 @@ void    print_tetro( unsigned short *dest, size_t size)
         else
             ft_putchar('.');
         size--;
-        tmp = *dest;
+        tmp = part_field;
         if (size % width == 0)
             ft_putchar('\n');
     }

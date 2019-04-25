@@ -6,13 +6,13 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 13:23:50 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/22 13:26:24 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/22 13:38:59 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	find_first(t_tetro *t)
+static void	find_first(t_tetro *t)
 {
 	unsigned short mask;
 	size_t i;
@@ -31,33 +31,31 @@ static int		is_smashboy(unsigned short tetro)
 {
 	unsigned short mask;
 	mask = 52224;
-	print_tetro(&mask, 16);
 	if ((tetro ^ mask) == 0)
 		return (1);
 	return (0);
 }
 
-
-int	tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, size_t index)
+int	tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, unsigned short tetr, size_t index)
 {
 	unsigned short prev_visited;
 	size_t total_size;
-
+	
 	total_size = SIZE * SIZE;
-	if ((mask & t->tetro) != 0 && (*visited & mask) == 0)
+	if ((mask & tetr) != 0 && (*visited & mask) == 0)
 	{
 		prev_visited = *visited;
 		*visited |= mask;
-		if (count_ones(*visited) == 4 && (prev_visited ^ *visited) == 0)
+		if (count_ones(visited) == 4 && (prev_visited ^ *visited) == 0)
 			return (0);
 		if (index < total_size - SIZE && (*visited & (mask << SIZE)) == 0)
-			t->height += tetro_wh(t, mask << SIZE, visited, index + SIZE);
+			t->height += tetro_wh(t, mask << SIZE, visited, tetr, index + SIZE);
 		if (index >= SIZE && (*visited & (mask >> SIZE)) == 0)
-			t->height += tetro_wh(t, mask >> SIZE, visited, index - SIZE);
+			t->height += tetro_wh(t, mask >> SIZE, visited,  tetr, index - SIZE);
 		if (index % SIZE != 0 && (*visited & (mask >> 1)) == 0)
-			t->width += tetro_wh(t, mask >> 1, visited, index - 1);
+			t->width += tetro_wh(t, mask >> 1, visited, tetr, index - 1);
 		if ((index + 1) % SIZE != 0 && (*visited & (mask << 1)) == 0)
-			t->width += tetro_wh(t, mask << 1, visited, index + 1);
+			t->width += tetro_wh(t, mask << 1, visited, tetr, index + 1);
 		return (1);
 	}
 	return (0);
@@ -74,22 +72,20 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	if (!t)
 		return (0);
 	t->tetro = tetr;
-//	printf("MKLIST %s\n", ft_itoa_base(t->tetro, 2));
-	t->print = 'A' + count;
+	t->print = 'A' + (count - 1);
 	find_first(t);
 	mask = (1 << t->index);
 	t->width = 1;
 	t->height = 1;
+	t->used = 0;
 	total_size = SIZE * SIZE;
-	if (is_smashboy(t->tetro))
+	if (is_smashboy(tetr))
 	{
 		t->width = SIZE / 2;
 		t->height = SIZE / 2;
 	}
 	else
-		tetro_wh(t, mask, &visited, total_size, t->index);
-	printf("ADD TETRO WIDTH %d\n", t->width);
-	printf("ADD TETRO HEIGHT %d\n", t->height);
+		tetro_wh(t, mask, &visited, tetr, t->index);
 	if (!(ft_lstaddend(lst, t, sizeof(t))))
 		return (0);
 	return (1);

@@ -62,7 +62,7 @@ void        to_bits(char *s, unsigned short *dst, int iter, char f)
 	*dst |= res << (len * (len - 1) - (len * iter));
 }
 
-size_t	get_row(size_t index, int total_new, int width_old)
+size_t	get_row(size_t index, size_t total_new, size_t width_old)
 {
 	size_t test;
 	size_t row = 0;

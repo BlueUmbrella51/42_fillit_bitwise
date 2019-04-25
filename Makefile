@@ -6,25 +6,20 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/22 12:52:39 by lravier       ########   odam.nl          #
+#    Updated: 2019/04/23 16:51:35 by lravier       ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
 NAME = fillit
 
-SRC =	coortoi.c			\
-		itocoor.c			\
-		tetro_translate.c	\
-		to_bits.c			\
-		read_input.c		\
-		main.c 				\
-		validate_tetro.c	\
-		check_read_error.c	\
-		find_mapsize.c		\
-		add_tetro.c			\
-		print_tetro.c		\
-		translate_for_map_increase.c \
-		tetro_wh.c
+SRC =	tetrominos_validation.c	\
+		tetrominos_setup.c		\
+		tetrominos_utility.c	\
+		fillit_utility.c		\
+		ft_error.c				\
+		read_input.c			\
+		main.c					\
+		print_solution.c
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs
@@ -54,7 +49,7 @@ $(OBJS): $(SRCS)
 
 clean:
 	/bin/rm -Rf $(OBJDIR)
-	/bin/rm -Rf *~
+	/bin/rm -Rf *~ *#
 fclean: clean
 	/bin/rm -f $(NAME)
 
