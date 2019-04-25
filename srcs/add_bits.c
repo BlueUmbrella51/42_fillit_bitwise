@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-void add_bits(t_tetro tetro, t_field *field)
+void toggle_bits(t_tetro tetro, t_field *field)
 {
     toggle_bit(tetro.pl_index1, field->size, field);
     toggle_bit(tetro.pl_index2, field->size, field);

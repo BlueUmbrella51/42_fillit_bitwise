@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/25 14:41:34 by lravier       ########   odam.nl          #
+#    Updated: 2019/04/25 17:19:40 by jdunnink      ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -27,7 +27,8 @@ SRC =	tetrominos_validation.c	\
 		add_bits.c				\
 		move_bit.c				\
 		move_bits.c				\
-		field_utility.c
+		field_utility.c			\
+		map_solver.c			\
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs
