@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/25 16:53:38 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 17:07:06 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct s_tetro
 /** BIT MOVEMENT **/
 void toggle_bit(size_t index, size_t size, t_field *field);      // flip a bit within a field on or off
 void move_bit(size_t index, size_t new_index, t_field *field);  // move one bit in a field
-void move_bits(t_tetro_new tetro, int move_height, int move_width, t_field *field); // move tetro blocks
-void add_bits(t_tetro_new tetro, t_field *field);       // add tetro blocks to field
+void move_bits(t_tetro tetro, int move_height, int move_width, t_field *field); // move tetro blocks
+void add_bits(t_tetro tetro, t_field *field);       // add tetro blocks to field
 
 /** FIELD FUNCTIONS **/
 void print_part_field(unsigned long long part_field, size_t size); // print 1/4th of a complete field

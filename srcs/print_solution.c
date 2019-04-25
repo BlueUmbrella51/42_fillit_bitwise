@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/23 09:45:04 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/23 16:50:53 by lravier       ########   odam.nl         */
+/*   Updated: 2019/04/25 17:10:24 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_list		*is_tetromino_at_index(t_list *t, void *id)
 	size_t *n;
 
 	n = (size_t *)id;
-	if (((t_tetro *)((t_list*)t)->content)->index == *n)
+	if (((t_tetro *)((t_list*)t)->content)->og_index1 == *n)
 		return ((t_list*)t);
 	return (NULL);
 }
