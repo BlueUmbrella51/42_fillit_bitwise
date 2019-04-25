@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 08:38:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/25 17:31:53 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 18:55:13 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct s_tetro
     size_t pl_index4;                      // where the block is placed in the field
     char print;
 }              t_tetro;
+
+void    set_indexes(t_tetro *t);
+void    convert_indexes(t_tetro *t);
 
 /** BIT MOVEMENT **/
 void toggle_bit(size_t index, size_t size, t_field *field);      // flip a bit within a field on or off

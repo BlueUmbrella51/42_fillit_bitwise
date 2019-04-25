@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 16:52:00 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/04/25 17:45:53 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 20:25:31 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int solve_pos(t_field *map, t_tetro *tetro)
     t_field tmp;
 
     tmp = create_field(256);
-	print_tetro(&tetro->tetro, 16);
+	set_indexes(tetro);
+	tetro->pl_index1 = tetro->og_index1;
+	tetro->pl_index2 =	tetro->og_index2;
+	tetro->pl_index3 =	tetro->og_index3;
+	tetro->pl_index4 =	tetro->og_index4;
     toggle_bits(*tetro, &tmp);
 	print_field(tmp);
     while (check_fit_field(*map, tmp) == 0)
@@ -72,7 +76,7 @@ int solve_pos(t_field *map, t_tetro *tetro)
 int solve_map(t_field *field, t_list **list, size_t map_size, size_t num_tetros)
 {
     t_list *curr;
-
+	print_field(*field);
     curr = *list;
     if (count_field(field, map_size) == (int)num_tetros * SIZE)
         return (1);
@@ -81,7 +85,8 @@ int solve_map(t_field *field, t_list **list, size_t map_size, size_t num_tetros)
         if(solve_pos(field, curr->content))
             if(solve_map(field, &curr->next, map_size, num_tetros))
                 return (1);
-        curr = curr->next;
+		//remove curr from fiel
+		curr = curr->next;
     }
     return (0);
 }
@@ -92,7 +97,7 @@ int solver(t_field *field, size_t num_tetros, t_list **tetros)
 
     size = min_mapsize(num_tetros);
     printf("MAP_SIZE: %zu\nNUM_TETROS: %zu\n", size, num_tetros);
-    while (size < 16)
+    while (size < 5)
     {
         printf("in while\n");
         *field = create_field(size * size);

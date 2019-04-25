@@ -6,18 +6,18 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 09:10:19 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/04/25 09:10:21 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 20:24:50 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static unsigned long long add_empty_row(unsigned long long part_field)             // add an empty row at the top of a partial field
+static unsigned long long add_empty_row(unsigned long long part_field)
 {
     return (part_field >> 8);
 }
 
-static unsigned long long add_empty_left(unsigned long long part_field)            // add an empty column to a partial field
+static unsigned long long add_empty_left(unsigned long long part_field)
 {
     unsigned long long mask;
     unsigned long long tmp;
@@ -33,7 +33,7 @@ static unsigned long long add_empty_left(unsigned long long part_field)         
     return (part_field);
 }
 
-static unsigned long long expand_part_field(unsigned long long part_field)              // expand the current partial field by 1 row/col
+static unsigned long long expand_part_field(unsigned long long part_field)
 {
     unsigned long long mask1;
     unsigned long long mask2;
@@ -53,7 +53,7 @@ static unsigned long long expand_part_field(unsigned long long part_field)      
     return (mask2 | mask1);
 }
 
-static t_field init_field(size_t total_size)                                        // initialize a new field
+static t_field init_field(size_t total_size)                              
 {
     t_field field;
     unsigned long long init;
@@ -67,7 +67,7 @@ static t_field init_field(size_t total_size)                                    
     return (field);
 }
 
-t_field create_field(size_t total_size)                                        // create a new field with a given size in bits
+t_field create_field(size_t total_size)                                   
 {
     size_t i;
     size_t size;

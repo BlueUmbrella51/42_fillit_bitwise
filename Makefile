@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/25 17:19:40 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/04/25 18:58:13 by jdunnink      ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,6 +29,7 @@ SRC =	tetrominos_validation.c	\
 		move_bits.c				\
 		field_utility.c			\
 		map_solver.c			\
+		get_indexes.c			\
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs
@@ -49,7 +50,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft/ fclean && make -C libft
-	$(CC) -o fillit $(CFLAGS) $(OBJS) $(HEADER) $(LIB)
+	$(CC) -g -o fillit $(CFLAGS) $(OBJS) $(HEADER) $(LIB)
 
 $(OBJS): $(SRCS)
 	/bin/mkdir -p $(OBJDIR)

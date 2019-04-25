@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 13:56:49 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/25 17:30:25 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 20:22:32 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char *argv[])
 	size_t count;
 	t_field field;
 
+	tetros = NULL;
 	count = 0;
 	if (argc != 2)
 		return (ft_error("Invalid number of input files"));

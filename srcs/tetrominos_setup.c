@@ -6,7 +6,7 @@
 /*   By: lravier <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 13:23:50 by lravier       #+#    #+#                 */
-/*   Updated: 2019/04/25 17:44:05 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/04/25 20:15:48 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,14 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	mask = (1 << t->og_index1);
 	t->width = 1;
 	t->height = 1;
-	t->used = 0;
-	t->og_index1 = 1;
-	t->pl_index1 = 1;
+	t->og_index1 = 0U;
+	t->og_index2 = 0U;
+	t->og_index3 = 0U;
+	t->og_index4 = 0U;
+	t->pl_index1 = 0U;
+	t->pl_index2 = 0U;
+	t->pl_index3 = 0U;
+	t->pl_index4 = 0U;
 	total_size = SIZE * SIZE;
 	if (is_smashboy(tetr))
 	{
@@ -90,5 +95,7 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 		tetro_wh(t, mask, &visited, tetr, t->og_index1);
 	if (!(ft_lstaddend(lst, t, sizeof(t))))
 		return (0);
+	t_list *tmp;
+	tmp = *lst;
 	return (1);
 }
