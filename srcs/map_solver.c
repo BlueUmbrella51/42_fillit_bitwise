@@ -49,13 +49,12 @@ int solve_pos(t_field *map, t_tetro *tetro)
     t_field tmp;
 
     tmp = create_field(256);
-	set_indexes(tetro);
 	tetro->pl_index1 = tetro->og_index1;
-	tetro->pl_index2 =	tetro->og_index2;
-	tetro->pl_index3 =	tetro->og_index3;
-	tetro->pl_index4 =	tetro->og_index4;
+	tetro->pl_index2 = tetro->og_index2;
+	tetro->pl_index3 = tetro->og_index3;
+	tetro->pl_index4 = tetro->og_index4;
+    printf("%u\n", tetro->tetro);
     toggle_bits(*tetro, &tmp);
-	print_field(tmp);
     while (check_fit_field(*map, tmp) == 0)
     {
         toggle_bits(*tetro, &tmp);
@@ -76,7 +75,7 @@ int solve_pos(t_field *map, t_tetro *tetro)
 int solve_map(t_field *field, t_list **list, size_t map_size, size_t num_tetros)
 {
     t_list *curr;
-	print_field(*field);
+//	print_field(*field);
     curr = *list;
     if (count_field(field, map_size) == (int)num_tetros * SIZE)
         return (1);
@@ -85,7 +84,7 @@ int solve_map(t_field *field, t_list **list, size_t map_size, size_t num_tetros)
         if(solve_pos(field, curr->content))
             if(solve_map(field, &curr->next, map_size, num_tetros))
                 return (1);
-		//remove curr from fiel
+		//remove curr from field
 		curr = curr->next;
     }
     return (0);
@@ -94,18 +93,16 @@ int solve_map(t_field *field, t_list **list, size_t map_size, size_t num_tetros)
 int solver(t_field *field, size_t num_tetros, t_list **tetros)
 {
     size_t size;
-
+    printf("SOLVER: %zu\n", ((t_tetro *)((t_list *)*tetros)->content)->og_index1);
     size = min_mapsize(num_tetros);
     printf("MAP_SIZE: %zu\nNUM_TETROS: %zu\n", size, num_tetros);
     while (size < 5)
     {
-        printf("in while\n");
         *field = create_field(size * size);
         if (solve_map(field, tetros, size, num_tetros))
             return (1);
         reset_field(field);
         size++;
     }
-    print_field(*field);
     return (0);
 }

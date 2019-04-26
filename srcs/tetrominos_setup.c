@@ -26,7 +26,7 @@ static void	find_first(t_tetro *t)
 	}
 	t->og_index1 = i;
 }
-
+/*
 static int		is_smashboy(unsigned short tetro)
 {
 	unsigned short mask;
@@ -35,7 +35,7 @@ static int		is_smashboy(unsigned short tetro)
 		return (1);
 	return (0);
 }
-
+*/
 int	tetro_wh(t_tetro* t, unsigned short mask, unsigned short *visited, unsigned short tetr, size_t index)
 {
 	unsigned short prev_visited;
@@ -67,33 +67,32 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	unsigned short mask;
 	unsigned short visited;
 
-	visited = 0;
+	visited = 0U;
+	mask = 0U;
 	t = (t_tetro *)malloc(sizeof(t_tetro));
 	if (!t)
 		return (0);
 	t->tetro = tetr;
 	t->print = 'A' + (count - 1);
 	find_first(t);
-	mask = (1 << t->og_index1);
-	t->width = 1;
-	t->height = 1;
-	t->og_index1 = 0U;
-	t->og_index2 = 0U;
-	t->og_index3 = 0U;
-	t->og_index4 = 0U;
-	t->pl_index1 = 0U;
-	t->pl_index2 = 0U;
-	t->pl_index3 = 0U;
-	t->pl_index4 = 0U;
+	mask = (1U << t->og_index1);
+	printf("INDEX FIRST: %zu\n", t->og_index1);
 	total_size = SIZE * SIZE;
-	if (is_smashboy(tetr))
+/*	if (is_smashboy(tetr))
 	{
 		t->width = SIZE / 2;
 		t->height = SIZE / 2;
 	}
 	else
 		tetro_wh(t, mask, &visited, tetr, t->og_index1);
-	if (!(ft_lstaddend(lst, t, sizeof(t))))
+*/	set_indexes(t);
+	printf("%c\n", t->print);
+	printf("%zu\n", t->og_index1);
+	printf("%zu\n", t->og_index2);
+	printf("%zu\n", t->og_index3);
+	printf("%zu\n", t->og_index4);
+	print_tetro(&t->tetro, 16);
+	if (!(ft_lstaddend(lst, t, sizeof(t_tetro))))
 		return (0);
 	t_list *tmp;
 	tmp = *lst;

@@ -31,5 +31,6 @@ int	main(int argc, char *argv[])
 	if (res != 0)
 		return (-1);
 	res = solver(&field, count, &tetros);
+	print_field(field);
 	return (0);
 }
