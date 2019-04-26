@@ -76,7 +76,6 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	t->print = 'A' + (count - 1);
 	find_first(t);
 	mask = (1U << t->og_index1);
-	printf("INDEX FIRST: %zu\n", t->og_index1);
 	total_size = SIZE * SIZE;
 /*	if (is_smashboy(tetr))
 	{
@@ -86,12 +85,6 @@ int		add_tetro(unsigned short tetr, size_t count, t_list **lst, size_t total_siz
 	else
 		tetro_wh(t, mask, &visited, tetr, t->og_index1);
 */	set_indexes(t);
-	printf("%c\n", t->print);
-	printf("%zu\n", t->og_index1);
-	printf("%zu\n", t->og_index2);
-	printf("%zu\n", t->og_index3);
-	printf("%zu\n", t->og_index4);
-	print_tetro(&t->tetro, 16);
 	if (!(ft_lstaddend(lst, t, sizeof(t_tetro))))
 		return (0);
 	t_list *tmp;

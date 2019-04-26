@@ -21,6 +21,7 @@ int	main(int argc, char *argv[])
 	t_field field;
 
 	tetros = NULL;
+	field = create_field(256);
 	count = 0;
 	if (argc != 2)
 		return (ft_error("Invalid number of input files"));
@@ -31,6 +32,7 @@ int	main(int argc, char *argv[])
 	if (res != 0)
 		return (-1);
 	res = solver(&field, count, &tetros);
+	printf("\nA solution has been found. current field : \n");
 	print_field(field);
 	return (0);
 }
