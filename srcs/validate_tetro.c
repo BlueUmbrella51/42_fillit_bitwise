@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 16:29:46 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 16:31:38 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/03 18:02:21 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	int	check_connections(size_t index, size_t total_size, uint16_t *tetro)
 {
-	size_t i;
-	int count;
+	size_t	i;
+	int		count;
 
 	count = 0;
 	i = index - 1;
@@ -44,9 +44,9 @@ static	int	check_connections(size_t index, size_t total_size, uint16_t *tetro)
 
 static	int	check_edges(uint16_t *tetro, size_t total_size)
 {
-	uint16_t mask;
-	size_t i;
-	int edges;
+	uint16_t	mask;
+	size_t		i;
+	int			edges;
 
 	mask = 1U;
 	edges = 0;
