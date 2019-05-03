@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   tetro_translate.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 18:16:26 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 18:17:23 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	get_mask(uint16_t *top_row, uint16_t *left_col, size_t total_size)
+static	void	get_mask(uint16_t *top_row, uint16_t *left_col, size_t total_size)
 {
 	size_t i;
 
@@ -19,7 +30,7 @@ static void	get_mask(uint16_t *top_row, uint16_t *left_col, size_t total_size)
 	}
 }
 
-void tetro_translate (uint16_t *tetro, size_t total_size)
+void			tetro_translate (uint16_t *tetro, size_t total_size)
 {
 	uint16_t top_row;
 	uint16_t left_col;
