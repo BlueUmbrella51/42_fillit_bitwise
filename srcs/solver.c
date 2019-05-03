@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:50:00 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 17:54:04 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/03 18:38:35 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static	int		check_fit(uint16_t *map, t_tetro *tetro)
 static int     same_rest(t_list *curr, t_list *rest)
 {
 	t_list	*r;
-    t_tetro	*rc;
-    t_tetro	*ch;
-    
+	t_tetro	*rc;
+	t_tetro	*ch;
+ 
 	r = rest;
 	ch = curr->content;
 	if (!r)
@@ -41,7 +41,7 @@ static int     same_rest(t_list *curr, t_list *rest)
 	return (1);
 }
 
-static int     solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map)
+static	int		solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map)
 {
 	while (tetro->y <= map_size - tetro->height)
 	{
@@ -79,22 +79,22 @@ static	int		solve_map(uint16_t *map, t_list **tetros, size_t map_size)
 	t_tetro	*tetro;
 	t_list	*last;
 
-    curr = *tetros;
-    if (!curr)
-        return (1);
-    tetro = curr->content;
-    last = ((t_tetro *)((t_list *)curr)->content)->last;
-    index = 0;
-    if (map_size < tetro->width || map_size < tetro->height)
-        return (0);
-    if (last)
-    {
-        index = ((t_tetro *)(last->content))->x + ((t_tetro *)(last->content))->y * map_size;
-        tetro->y = index / map_size;
-    }
-    else
-        tetro->y = 0;
-    return (solve_pos(curr, tetro, map_size, map));
+	curr = *tetros;
+	if (!curr)
+		return (1);
+	tetro = curr->content;
+	last = ((t_tetro *)((t_list *)curr)->content)->last;
+	index = 0;
+	if (map_size < tetro->width || map_size < tetro->height)
+		return (0);
+	if (last)
+	{
+		index = ((t_tetro *)(last->content))->x + ((t_tetro *)(last->content))->y * map_size;
+		tetro->y = index / map_size;
+	}
+	else
+		tetro->y = 0;
+	return (solve_pos(curr, tetro, map_size, map));
 }
 
 int				solver(uint16_t *map, t_list **tetros, size_t map_size)
