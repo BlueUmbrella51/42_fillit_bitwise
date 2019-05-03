@@ -12,24 +12,24 @@
 
 #include "fillit.h"
 
-static char		**initialize_array(size_t size)
+static  char    **initialize_array(size_t size)
 {
-	char **res;
-	size_t i;
+    char **res;
+    size_t i;
 
-	i = 0;
-	res = (char **)malloc(sizeof(char *) * size);
-	if (!res)
+    i = 0;
+    res = (char **)malloc(sizeof(char *) * size);
+    if (!res)
 		return (NULL);
-	while (i < size)
-	{
+    while (i < size)
+    {
 		res[i] = ft_strnew(size);
 		i++;
-	}
-	return (res);
+    }
+    return (res);
 }
 
-static void    fill_array(char **res, size_t mapsize)
+static  void    fill_array(char **res, size_t mapsize)
 {
     size_t i;
     size_t j;
@@ -48,7 +48,7 @@ static void    fill_array(char **res, size_t mapsize)
     }
 }
 
-static void    put_map(char **res, size_t mapsize)
+static  void    put_map(char **res, size_t mapsize)
 {
     size_t i;
     size_t j;
@@ -68,7 +68,7 @@ static void    put_map(char **res, size_t mapsize)
     }
 }
 
-static void    place_tetro(t_tetro *t, char **map)
+static  void    place_tetro(t_tetro *t, char **map)
 {
     size_t i;
     int x;
@@ -91,18 +91,18 @@ static void    place_tetro(t_tetro *t, char **map)
     }
 }
 
-void    print_solution (t_list **tetros, size_t mapsize)
+void            print_solution (t_list **tetros, size_t mapsize)
 {
     char **res;
-	t_list *curr;
+    t_list *curr;
 
     res = initialize_array(mapsize);
     fill_array(res, mapsize);
-	curr = *tetros;
-	while(curr)
-	{
-		place_tetro(curr->content, res);
+    curr = *tetros;
+    while(curr)
+    {
+        place_tetro(curr->content, res);
         curr = curr->next;
-	}
+    }
     put_map(res, mapsize);
 }
