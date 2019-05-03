@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:23:13 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 17:25:23 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/03 18:23:51 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	void	swap_list(t_list *curr, t_list *new)
 {
-	 t_tetro *tmp;
+	t_tetro *tmp;
 
 	tmp = curr->content;
 	curr->content = new->content;
@@ -23,7 +23,8 @@ static	void	swap_list(t_list *curr, t_list *new)
 
 static	int		compare_lst(t_list *curr, t_list *comp)
 {
-	if (((t_tetro *)(curr->content))->tetro == ((t_tetro*)(comp->content))->tetro)
+	if (((t_tetro *)(curr->content))->tetro ==
+((t_tetro*)(comp->content))->tetro)
 		return (1);
 	return (0);
 }
@@ -42,7 +43,8 @@ static	int		should_swap(t_list *start, t_list *curr)
 	return (1);
 }
 
-int				find_permutations(t_list *lst, t_list *pos, uint16_t *map, size_t min_size, int *found)
+int				find_permutations(t_list *lst, t_list *pos,
+uint16_t *map, size_t min_size, int *found)
 {
 	t_list *curr;
 
@@ -56,13 +58,13 @@ int				find_permutations(t_list *lst, t_list *pos, uint16_t *map, size_t min_siz
 	curr = pos;
 	while (curr)
 	{
-		if (*found)  
+		if (*found)
 			return (1);
 		if (should_swap(pos, curr))
 		{
 			swap_list(pos, curr);
 			find_permutations(lst, pos->next, map, min_size, found);
-			if (*found)  
+			if (*found)
 				return (1);
 			swap_list(pos, curr);
 		}
