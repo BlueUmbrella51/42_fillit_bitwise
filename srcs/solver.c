@@ -1,10 +1,5 @@
 #include "fillit.h"
 
-static void    toggle_tetro(uint16_t *map, t_tetro *tetro)
-{
-    *(uint64_t *)(map + tetro->y) ^= (tetro->tetro >> tetro->x);
-}
-
 static int     check_fit(uint16_t *map, t_tetro *tetro)
 {
     if((*(uint64_t *)(map + tetro->y) & (tetro->tetro >> tetro->x)) == 0) 
@@ -32,30 +27,9 @@ int     same_rest(t_list *curr, t_list *rest)
     return (1);
 }
 
-int     solve_map(uint16_t *map, t_list **tetros, size_t map_size)
-{
-    size_t index;
-    t_list *curr;
-    t_tetro *tetro;
-    t_list *last;
 
-    curr = *tetros;
-    if (!curr)
-    {
-        return (1);
-    }
-    tetro = curr->content;
-    last = ((t_tetro *)((t_list *)curr)->content)->last;
-    index = 0;
-    if (map_size < tetro->width || map_size < tetro->height)
-        return (0);
-    if (last)
-    {
-        index = ((t_tetro *)((t_list *)last)->content)->x + ((t_tetro *)((t_list *)last)->content)->y * map_size;
-        tetro->y = index / map_size;
-    }
-    else
-        tetro->y = 0;
+int     solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map)
+{
     while (tetro->y <= map_size - tetro->height)
     {
         tetro->x = 0;
@@ -83,6 +57,31 @@ int     solve_map(uint16_t *map, t_list **tetros, size_t map_size)
     tetro->x = 0;
     tetro->y = 0;
     return (0);
+}
+
+int     solve_map(uint16_t *map, t_list **tetros, size_t map_size)
+{
+    size_t index;
+    t_list *curr;
+    t_tetro *tetro;
+    t_list *last;
+
+    curr = *tetros;
+    if (!curr)
+        return (1);
+    tetro = curr->content;
+    last = ((t_tetro *)((t_list *)curr)->content)->last;
+    index = 0;
+    if (map_size < tetro->width || map_size < tetro->height)
+        return (0);
+    if (last)
+    {
+        index = ((t_tetro *)((t_list *)last)->content)->x + ((t_tetro *)((t_list *)last)->content)->y * map_size;
+        tetro->y = index / map_size;
+    }
+    else
+        tetro->y = 0;
+    return (solve_pos(curr, tetro, map_size, map));
 }
 
 int     solver(uint16_t *map, t_list **tetros, size_t map_size)
