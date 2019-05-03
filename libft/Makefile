@@ -96,7 +96,7 @@ CC = gcc
 
 NAME = libft.a
 
-CFLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -c
 
 .PHONY: all clean fclean re
 .SUFFIXES: .c .o
