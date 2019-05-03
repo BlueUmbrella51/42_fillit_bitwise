@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:44:09 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 18:21:04 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/03 18:34:01 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ static	size_t	find_first(uint16_t tetro)
 		mask = (mask << 1U);
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
-static	int		tetro_wh(t_tetro* t, uint16_t mask, uint16_t *visited, uint16_t tetr, size_t index)
+static int		tetro_wh(t_tetro *t, uint16_t mask, uint16_t *visited,
+uint16_t tetr, size_t index)
 {
 	uint16_t	prev_visited;
-    size_t		total_size;
+	size_t		total_size;
 
 	total_size = SIZE * SIZE;
 	if ((mask & tetr) != 0 && (*visited & mask) == 0)
@@ -42,7 +43,7 @@ static	int		tetro_wh(t_tetro* t, uint16_t mask, uint16_t *visited, uint16_t tetr
 		if (index < total_size - SIZE && (*visited & (mask << SIZE)) == 0)
 			t->height += tetro_wh(t, mask << SIZE, visited, tetr, index + SIZE);
 		if (index >= SIZE && (*visited & (mask >> SIZE)) == 0)
-			t->height += tetro_wh(t, mask >> SIZE, visited,  tetr, index - SIZE);
+			t->height += tetro_wh(t, mask >> SIZE, visited, tetr, index - SIZE);
 		if (index % SIZE != 0 && (*visited & (mask >> 1)) == 0)
 			t->width += tetro_wh(t, mask >> 1, visited, tetr, index - 1);
 		if ((index + 1) % SIZE != 0 && (*visited & (mask << 1)) == 0)
@@ -59,7 +60,7 @@ static	void	find_last(t_list **lst, t_tetro *t)
 
 	tmp = *lst;
 	while (tmp)
-	{	
+	{
 		if (((t_tetro *)(tmp->content))->fpt == t->fpt)
 		{
 			last = tmp;
@@ -82,7 +83,7 @@ int				add_tetro(uint16_t tetr, size_t count, t_list **lst)
 	index = find_first(tetr);
 	mask = (1U << index);
 	visited = 0UL;
-	t->fpt = tetr; 
+	t->fpt = tetr;
 	t->tetro = convert_sll(tetr);
 	t->print = 'A' + (count - 1);
 	t->order = count;
