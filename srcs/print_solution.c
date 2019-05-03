@@ -91,19 +91,6 @@ static void    place_tetro(t_tetro *t, char **map)
     }
 }
 
-static void    add_tetros(char **map, t_list **tetros)
-{
-    t_list *curr;
-
-    curr = *tetros;
-    while (curr)
-    {
-        place_tetro(curr->content, map);
-        curr = curr->next;
-    }
-
-}
-
 void    print_solution (t_list **tetros, size_t mapsize)
 {
     char **res;

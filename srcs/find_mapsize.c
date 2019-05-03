@@ -30,14 +30,6 @@ int     should_swap(t_list *start, t_list *curr)
     return (1);
 }
 
-static void    toggle_tetro(t_list *t, uint16_t *map)
-{
-    t_tetro *tetro;
-
-    tetro = t->content;
-    *((uint64_t *)(map + tetro->y)) ^= (tetro->tetro >> tetro->x);
-}
-
 static int check_tetro(t_list *curr, uint16_t *map, size_t mapsize)
 {
     t_tetro *tetro;
@@ -87,10 +79,10 @@ int solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
         return (0);
     if (check_tetro(curr, map, mapsize))
     {
-        toggle_tetro(curr, map);
+        toggle_tetro(curr->content, map);
         if (solve_it(&curr->next, map, mapsize))
             return (1);
-        toggle_tetro(curr, map);
+        toggle_tetro(curr->content, map);
     }
     return (0);
 }
@@ -103,7 +95,6 @@ int test_it(t_list **tetros, uint16_t *map, size_t min_size)
 int    find_permutations(t_list *lst, t_list *pos, uint16_t *map, size_t min_size, int *found)
 {
     t_list *curr;
-//    print_lst(&pos);
     if (!pos && *found == 0)
     {
         ft_bzero(map, sizeof(uint16_t) + 16);
