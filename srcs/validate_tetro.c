@@ -1,4 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   validate_tetro.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 15:16:02 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 15:24:54 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
+
+static int count_ones(uint16_t *tetro)
+{
+    uint16_t tmp;
+    int count;
+
+    count = 0;
+    tmp = *tetro;
+    while (tmp)
+    {
+        count += tmp & 1;
+        tmp >>= 1U;
+    }
+    return (count);
+}
 
 static int	check_connections(size_t index, size_t total_size, uint16_t *tetro)
 {
