@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   utilities1.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 15:46:05 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 15:46:15 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 size_t  get_row(size_t index, int o_size)
@@ -6,7 +18,6 @@ size_t  get_row(size_t index, int o_size)
 
     row = 0;
     row = 3 - (index / o_size);
-//    printf("row: %zu\n", row);
     return (row);
 }
 
@@ -21,7 +32,6 @@ void	itocoor(int *x, int *y, size_t index, size_t size)
 	*y = index / size;
 }
 
-//only works to bigger sizes
 size_t    convert_index(size_t index, size_t o_size, size_t n_width)
 {
     size_t row;
