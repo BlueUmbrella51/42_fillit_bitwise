@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   utilities1.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 15:46:05 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 15:46:15 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static	void	toggle_bit(size_t index, size_t size, t_field *field)
 {

@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 15:16:02 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 15:29:51 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/03 16:29:46 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 16:31:38 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int count_ones(uint16_t *tetro)
+static	int	count_ones(uint16_t *tetro)
 {
 	uint16_t tmp;
 	int count;
@@ -27,7 +27,7 @@ static int count_ones(uint16_t *tetro)
 	return (count);
 }
 
-static int	check_connections(size_t index, size_t total_size, uint16_t *tetro)
+static	int	check_connections(size_t index, size_t total_size, uint16_t *tetro)
 {
 	size_t i;
 	int count;
@@ -78,7 +78,7 @@ static	int	check_edges(uint16_t *tetro, size_t total_size)
 	return (0);
 }
 
-int		validate_tetro(uint16_t *tetro, size_t total_size)
+int			validate_tetro(uint16_t *tetro, size_t total_size)
 {
 	if (count_ones(tetro) != 4)
 		return (ft_error("error"));
