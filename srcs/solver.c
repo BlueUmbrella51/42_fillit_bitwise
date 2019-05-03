@@ -25,7 +25,7 @@ int     same_rest(t_list *curr, t_list *rest)
     while (r)
     {
         rc = r->content;
-        if  (ch->type != rc->type)
+        if  (ch->fpt != rc->fpt)
             return (0);
         r = r->next;
     }
