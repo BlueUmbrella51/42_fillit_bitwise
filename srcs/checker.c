@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   checker.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 15:37:13 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 15:37:16 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 size_t  min_mapsize(size_t num_tetros)
@@ -55,16 +67,13 @@ static int get_size(t_list **tetros, size_t num_tetros, uint16_t *map)
     found = 0;
     start_size = min_mapsize(num_tetros);
     duplicates = count_dup(tetros, num_tetros);
-//    printf("duplictaes: %zu\n", duplicates);
     if (duplicates < num_tetros / 2 || num_tetros < 6)
         return (start_size);
-    //when do we check if fits with other method?
     while (!find_permutations(*tetros, *tetros, map, start_size, &found))
     {
         ft_bzero(map, sizeof(uint16_t) * 16);
         start_size++;
     }
-//    printf("start size checker: %zu\n", start_size);
     return (start_size);
 }
 
