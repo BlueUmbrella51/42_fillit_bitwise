@@ -1,28 +1,15 @@
 #include "fillit.h"
 
-size_t  get_row(size_t index, int o_size)
+static  size_t  get_row(size_t index, int o_size)
 {
     size_t row;
 
     row = 0;
     row = 3 - (index / o_size);
-//    printf("row: %zu\n", row);
     return (row);
 }
 
-void    coortoi(size_t *index, int x, int y, size_t width)
-{
-    *index = x + y * width;
-}
-
-void	itocoor(int *x, int *y, size_t index, size_t size)
-{
-	*x = index % size;
-	*y = index / size;
-}
-
-//only works to bigger sizes
-size_t    convert_index(size_t index, size_t o_size, size_t n_width)
+static size_t    convert_index(size_t index, size_t o_size, size_t n_width)
 {
     size_t row;
     size_t conv;
