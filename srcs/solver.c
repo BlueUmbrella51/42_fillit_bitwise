@@ -1,5 +1,7 @@
 #include "fillit.h"
 
+static int     solve_map(uint16_t *map, t_list **tetros, size_t map_size);
+
 static int     check_fit(uint16_t *map, t_tetro *tetro)
 {
     if((*(uint64_t *)(map + tetro->y) & (tetro->tetro >> tetro->x)) == 0) 
@@ -28,7 +30,7 @@ int     same_rest(t_list *curr, t_list *rest)
 }
 
 
-int     solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map)
+static int     solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map)
 {
     while (tetro->y <= map_size - tetro->height)
     {
@@ -59,7 +61,7 @@ int     solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map)
     return (0);
 }
 
-int     solve_map(uint16_t *map, t_list **tetros, size_t map_size)
+static int     solve_map(uint16_t *map, t_list **tetros, size_t map_size)
 {
     size_t index;
     t_list *curr;

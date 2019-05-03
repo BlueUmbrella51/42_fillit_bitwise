@@ -49,10 +49,10 @@ int solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
         return (0);
     if (check_tetro(curr, map, mapsize))
     {
-        toggle_tetro(curr->content, map);
+        toggle_tetro(map, curr->content);
         if (solve_it(&curr->next, map, mapsize))
             return (1);
-        toggle_tetro(curr->content, map);
+        toggle_tetro(map, curr->content);
     }
     return (0);
 }

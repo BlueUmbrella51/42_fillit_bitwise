@@ -26,16 +26,11 @@ int		read_input(int fd, t_list **list, size_t *count);
 int		add_tetro(uint16_t  tetr, size_t count, t_list **lst);
 
 /** IN UTILITIES1 **/
-size_t  get_row(size_t index, int o_size);
-void    coortoi(size_t *index, int x, int y, size_t width);
-size_t    convert_index(size_t index, size_t o_size, size_t n_width);
 uint64_t convert_sll(uint16_t t);
 void	itocoor(int *x, int *y, size_t index, size_t size);
 
 /** IN UTILITIES2 **/
 int		ft_error(char *s);
-int     count_ones(uint16_t *tetro);
-size_t find_first(uint16_t t);
 
 /** IN READ TETRO **/
 int		read_tetromino(int *lr, int fd, char **line, uint16_t  *dst);
@@ -60,12 +55,10 @@ int     solver(uint16_t *map, t_list **tetros, size_t map_size);
 
 void    list_sort(t_list *tetros);
 
-/** TEMP!! **/
-void    print_tetro(t_list *curr);
-void    print_map(uint16_t **map);
-void    print_us(uint16_t *map);
-void    print_lst(t_list **lst);
-
 void    print_solution (t_list **tetros, size_t mapsize);
+void    toggle_tetro(uint16_t *map, t_tetro *tetro);
+int	count_ones(uint16_t *tetro);
+int solve_it(t_list **tetros, uint16_t *map, size_t mapsize);
+uint64_t convert_sll(uint16_t t);
 
 #endif

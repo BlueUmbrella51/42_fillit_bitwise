@@ -13,18 +13,23 @@
 NAME = fillit
 
 SRC =	read_input.c			\
-		utilities1.c			\
 		main.c					\
 		read_tetro.c			\
 		solver.c				\
 		tetro_translate.c		\
-		utilities2.c			\
 		validate_tetro.c 		\
-		find_mapsize.c			\
 		checker.c				\
 		print_map.c				\
 		order_lst.c				\
-		print_solution.c
+		print_solution.c		\
+		toggle_tetro.c			\
+		add_tetro.c				\
+		find_permutations.c 	\
+		ft_error.c 				\
+		itocoor.c				\
+		count_ones.c 			\
+		index_conversion.c 		\
+		sizer.c 
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs

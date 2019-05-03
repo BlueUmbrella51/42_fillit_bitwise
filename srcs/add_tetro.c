@@ -79,7 +79,7 @@ int		add_tetro(uint16_t tetr, size_t count, t_list **lst)
 	t->y = 0;
 	t->width = 1;
 	t->height = 1;
-	if (t->type == 0)
+	if (t->fpt == 52224)
 	{
 		t->width = 2;
 		t->height = 2;

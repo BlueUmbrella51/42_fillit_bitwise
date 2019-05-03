@@ -1,6 +1,5 @@
 #include "fillit.h"
 
-
 static void    swap_list(t_list *curr, t_list *new)
 {
     t_tetro *tmp;
