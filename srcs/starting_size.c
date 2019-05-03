@@ -41,8 +41,8 @@ static	size_t	count_dup(t_list **lst, size_t num_tetros)
 	{
 		while (curr)
 		{
-			if (((t_tetro *)((t_list *)curr)->content)->tetro ==
-				((t_tetro *)((t_list *)check)->content)->tetro)
+			if (((t_tetro *)(curr->content))->tetro ==
+				((t_tetro *)(check->content))->tetro)
 				dups[i] += 1;
 			curr = curr->next;
 		}

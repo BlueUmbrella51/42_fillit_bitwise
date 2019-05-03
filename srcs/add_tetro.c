@@ -60,7 +60,7 @@ static	void	find_last(t_list **lst, t_tetro *t)
 	tmp = *lst;
 	while (tmp)
 	{	
-		if (((t_tetro *)((t_list *)tmp)->content)->fpt == t->fpt)
+		if (((t_tetro *)(tmp->content))->fpt == t->fpt)
 		{
 			last = tmp;
 			t->last = last;

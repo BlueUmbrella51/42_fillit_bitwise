@@ -23,8 +23,8 @@ static	int	check_tetro(t_list *curr, uint16_t *map, size_t mapsize)
 	last = tetro->last;
 	if (last)
 	{
-		index = ((t_tetro *)((t_list *)last)->content)->x +
-		((t_tetro *)((t_list *)last)->content)->y * mapsize;
+		index = ((t_tetro *)(last->content))->x +
+		((t_tetro *)(last->content))->y * mapsize;
 		tetro->y = index / mapsize;
 	}
 	else
@@ -56,8 +56,8 @@ int				solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
 	curr = *tetros;
 	if (curr == NULL)
 		return (1);
-	if (mapsize < ((t_tetro *)((t_list *)curr)->content)->width || 
-		mapsize < ((t_tetro *)((t_list *)curr)->content)->height)
+	if (mapsize < ((t_tetro *)(curr->content))->width || 
+		mapsize < ((t_tetro *)(curr->content))->height)
 		return (0);
 	if (check_tetro(curr, map, mapsize))
 	{

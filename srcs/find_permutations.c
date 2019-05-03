@@ -23,7 +23,7 @@ static	void	swap_list(t_list *curr, t_list *new)
 
 static	int		compare_lst(t_list *curr, t_list *comp)
 {
-	if (((t_tetro *)((t_list *)curr)->content)->tetro == ((t_tetro*)((t_list *)comp)->content)->tetro)
+	if (((t_tetro *)(curr->content))->tetro == ((t_tetro*)(comp->content))->tetro)
 		return (1);
 	return (0);
 }
