@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:44:09 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 18:21:04 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/03 17:46:42 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static	size_t	find_first(uint16_t tetro)
 {
-	uint16_t	mask;
-	size_t		i;
+    uint16_t	mask;
+    size_t		i;
 
-	i = 0;
-	mask = 1U;
-	while ((mask & tetro) == 0)
-	{
-		mask = (mask << 1U);
-		i++;
-	}
-	return(i);
+    i = 0;
+    mask = 1U;
+    while ((mask & tetro) == 0)
+    {
+        mask = (mask << 1U);
+        i++;
+    }
+    return(i);
 }
 
 static	int		tetro_wh(t_tetro* t, uint16_t mask, uint16_t *visited, uint16_t tetr, size_t index)
