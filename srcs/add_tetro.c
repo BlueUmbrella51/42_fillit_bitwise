@@ -48,30 +48,13 @@ static void	find_last(t_list **lst, t_tetro *t)
 	tmp = *lst;
 	while (tmp)
 	{	
-		if (((t_tetro *)((t_list *)tmp)->content)->type == t->type)
+		if (((t_tetro *)((t_list *)tmp)->content)->fpt == t->fpt)
 		{
 			last = tmp;
 			t->last = last;
 		}
 		tmp = tmp->next;
 	}
-}
-
-static int     find_type(uint16_t tetr)
-{
-	uint16_t types[19] = {52224, 27648, 50688, 35904, 19584, 58368, 19968,
-    19520, 17984, 35008, 17600, 51328, 50240, 11776, 34952, 36352,
-    57856, 59392, 61440};
-    int i;
-
-    i = 0;
-    while (i < 19)
-    {
-        if (types[i] == tetr)
-            return (i);
-        i++;
-    }
-    return (999);
 }
 
 int		add_tetro(uint16_t tetr, size_t count, t_list **lst)
@@ -87,7 +70,6 @@ int		add_tetro(uint16_t tetr, size_t count, t_list **lst)
 	index = find_first(tetr);
 	mask = (1U << index);
 	visited = 0UL;
-	t->type = find_type(tetr);
 	t->fpt = tetr; 
 	t->tetro = convert_sll(tetr);
 	t->print = 'A' + (count - 1);

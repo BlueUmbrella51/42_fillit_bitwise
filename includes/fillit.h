@@ -18,7 +18,6 @@ typedef struct s_tetro
     size_t width;
     size_t height;
     t_list *last;
-    int type;
     char print;
 }              t_tetro;
 
