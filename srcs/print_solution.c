@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   print_solution.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 15:38:05 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 15:43:05 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 static char		**initialize_array(size_t size)
@@ -67,7 +79,6 @@ static void    place_tetro(t_tetro *t, char **map)
     i = 0;
     x = 0;
     y = 0;
-//    printf("tetro: %u w: %zu h: %zu x: %u y: %u\n", t->fpt, t->width, t->height, t->x, t->y);
     while (mask)
     {
         if (mask & t->fpt)
@@ -96,9 +107,15 @@ static void    add_tetros(char **map, t_list **tetros)
 void    print_solution (t_list **tetros, size_t mapsize)
 {
     char **res;
+	t_list *curr;
 
     res = initialize_array(mapsize);
     fill_array(res, mapsize);
-    add_tetros(res, tetros);
+	curr = *tetros;
+	while(curr)
+	{
+		place_tetro(curr->content, res);
+        curr = curr->next;
+	}
     put_map(res, mapsize);
 }

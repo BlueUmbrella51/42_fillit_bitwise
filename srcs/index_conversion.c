@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   utilities1.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 15:46:05 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 15:46:15 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 static  size_t  get_row(size_t index, int o_size)
@@ -9,7 +21,22 @@ static  size_t  get_row(size_t index, int o_size)
     return (row);
 }
 
+<<<<<<< HEAD:srcs/index_conversion.c
 static size_t    convert_index(size_t index, size_t o_size, size_t n_width)
+=======
+void    coortoi(size_t *index, int x, int y, size_t width)
+{
+    *index = x + y * width;
+}
+
+void	itocoor(int *x, int *y, size_t index, size_t size)
+{
+	*x = index % size;
+	*y = index / size;
+}
+
+size_t    convert_index(size_t index, size_t o_size, size_t n_width)
+>>>>>>> 9da243aaf2d42dc0368b265668ba418b4f48dd9c:srcs/utilities1.c
 {
     size_t row;
     size_t conv;
