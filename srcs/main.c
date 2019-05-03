@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/05/03 15:33:32 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 15:34:51 by jdunnink      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int main(int argc, char *argv[])
@@ -21,12 +33,7 @@ int main(int argc, char *argv[])
     if (res < 0)
       return (res);
     mapsize = checker(map, &tetros, count);
-//    printf("map after checker: %llu\n", *((uint64_t *)(map)));
-//    printf("%zu\n", mapsize);
-    //UPDATE MAPSIZE TO MAKE MAP!!
     mapsize = solver(map, &tetros, mapsize);
-/*      for (int i = 0; i < 16; i++)
-    printf("|%s\n", ft_itoa_base(map[i], 2));
-    printf("\n");
-*/    print_solution(&tetros, mapsize);
+    print_solution(&tetros, mapsize);
+	return (0);
 }
