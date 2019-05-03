@@ -9,7 +9,7 @@ static int     check_fit(uint16_t *map, t_tetro *tetro)
     return (0);
 }
 
-int     same_rest(t_list *curr, t_list *rest)
+static int     same_rest(t_list *curr, t_list *rest)
 {
     t_list *r;
     t_tetro *rc;
@@ -28,7 +28,6 @@ int     same_rest(t_list *curr, t_list *rest)
     }
     return (1);
 }
-
 
 static int     solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map)
 {
@@ -78,7 +77,7 @@ static int     solve_map(uint16_t *map, t_list **tetros, size_t map_size)
         return (0);
     if (last)
     {
-        index = ((t_tetro *)((t_list *)last)->content)->x + ((t_tetro *)((t_list *)last)->content)->y * map_size;
+        index = ((t_tetro *)(last->content))->x + ((t_tetro *)(last->content))->y * map_size;
         tetro->y = index / map_size;
     }
     else
