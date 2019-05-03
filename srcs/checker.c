@@ -22,16 +22,29 @@ size_t			min_mapsize(size_t num_tetros)
 	return (i);
 }
 
+static size_t count_duplicates(int *dups, size_t num_tetros)
+{
+	size_t i;
+	size_t res;
+
+	res = 0;
+	i = 0;	
+	while (i < num_tetros)
+	{
+		res += dups[i];
+		i++;
+	}
+	return (res);
+}
+
 static	size_t	count_dup(t_list **lst, size_t num_tetros)
 {
-	size_t	res;
 	t_list	*curr;
 	t_list	*check;
 	size_t	i;
 	int		dups[num_tetros];
 
 	ft_bzero(dups, num_tetros);
-	res = 0;
 	i = 0;
 	if (!*lst)
 		return (0);
@@ -41,21 +54,15 @@ static	size_t	count_dup(t_list **lst, size_t num_tetros)
 	{
 		while (curr)
 		{
-			if (((t_tetro *)((t_list *)curr)->content)->tetro ==
-				((t_tetro *)((t_list *)check)->content)->tetro)
+			if (((t_tetro *)(curr->content))->tetro ==
+				((t_tetro *)(check->content))->tetro)
 				dups[i] += 1;
  			curr = curr->next;
 		}
 		check = check->next;
 		i++;
 	}
-	i = 0;
-	while (i < num_tetros)
-	{
-		res += dups[i];
-		i++;
-	}
-	return (res);
+	return (count_duplicates(dups, num_tetros));
 }
 
 static	int		get_size(t_list **tetros, size_t num_tetros, uint16_t *map)
