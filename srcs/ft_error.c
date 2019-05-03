@@ -6,22 +6,22 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:21:24 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 15:21:43 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/03 17:48:22 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int     ft_error(char *s)
+int	ft_error(char *s)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (s[i] != '\0')
-    {
-        write(1, &s[i], 1);
-        i++;
-    }
-    ft_putchar('\n');
-    return (-1);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	ft_putchar('\n');
+	return (-1);
 }
