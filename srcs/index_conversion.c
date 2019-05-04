@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   index_conversion.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 18:30:14 by lravier       #+#    #+#                 */
-/*   Updated: 2019/05/03 18:31:08 by lravier       ########   odam.nl         */
+/*   Created: 2019/05/04 12:27:03 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/04 12:27:33 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static	size_t	convert_index(size_t index, size_t o_size, size_t n_width)
 
 uint64_t		convert_sll(uint16_t t)
 {
-	uint64_t res;
-	uint16_t mask;
-	uint64_t add;
-	size_t i;
-	size_t index;
+	uint64_t	res;
+	uint16_t	mask;
+	uint64_t	add;
+	size_t		i;
+	size_t		index;
 
 	i = 0;
 	mask = (1U << 15);
