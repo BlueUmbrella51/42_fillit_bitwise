@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 13:16:45 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:53:05 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ int    find_permutations(t_list *lst, t_list *pos, uint16_t *map, size_t num_tet
 
 /** IN SOLVER **/
 int     solver(uint16_t *map, t_list **tetros, size_t map_size);
+int     solve_map(uint16_t *map, t_list **tetros, size_t map_size);
+int     solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map);
 
 void    list_sort(t_list *tetros);
-
 void    print_solution (t_list **tetros, size_t mapsize);
 void    toggle_tetro(uint16_t *map, t_tetro *tetro);
 int	count_ones(uint16_t *tetro);

@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/04/25 18:58:13 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/05/04 13:49:08 by jdunnink      ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,7 +29,9 @@ SRC =	read_input.c			\
 		itocoor.c				\
 		count_ones.c 			\
 		index_conversion.c 		\
-		sizer.c 
+		sizer.c					\
+		solve_map.c				\
+		solve_pos.c				\
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs
