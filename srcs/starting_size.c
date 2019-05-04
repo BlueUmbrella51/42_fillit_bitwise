@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 11:50:39 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 11:54:27 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:07:18 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ size_t			min_mapsize(size_t num_tetros)
 		i++;
 	return (i);
 }
+
+
 
 static	size_t	count_dup(t_list **lst, size_t num_tetros)
 {
