@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   checker.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*   By: lravier <lravier@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 18:36:34 by lravier       #+#    #+#                 */
-/*   Updated: 2019/05/03 18:47:45 by lravier       ########   odam.nl         */
+/*   Created: 2019/05/03 18:46:15 by lravier        #+#    #+#                */
+/*   Updated: 2019/05/03 18:46:15 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	count_duplicates(int *dups, size_t num_tetros)
 	size_t res;
 
 	res = 0;
-	i = 0;
+	i = 0;	
 	while (i < num_tetros)
 	{
 		res += dups[i];

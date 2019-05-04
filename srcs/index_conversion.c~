@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   index_conversion.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 18:30:14 by lravier       #+#    #+#                 */
-/*   Updated: 2019/05/03 18:31:08 by lravier       ########   odam.nl         */
+/*   Created: 2019/05/03 17:34:19 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/03 17:38:14 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
