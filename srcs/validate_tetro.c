@@ -6,19 +6,17 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 11:48:13 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 11:48:51 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 12:57:22 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static	int	check_connections(size_t index, size_t total_size, uint16_t *tetro)
+static	int	check_connections(size_t i, size_t total_size, uint16_t *tetro)
 {
-	size_t	i;
 	int		count;
 
 	count = 0;
-	i = index - 1;
 	if (!((i + 1) % SIZE == 0))
 	{
 		if (*tetro & (1 << (i + 1)))
@@ -54,7 +52,7 @@ static	int	check_edges(uint16_t *tetro, size_t total_size)
 	while (i <= total_size)
 	{
 		if (mask & *tetro)
-			edges += check_connections(i, total_size, tetro);
+			edges += check_connections(i - 1, total_size, tetro);
 		mask = (1 << i);
 		i++;
 	}
