@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   checker.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 18:36:34 by lravier       #+#    #+#                 */
-/*   Updated: 2019/05/03 18:47:45 by lravier       ########   odam.nl         */
+/*   Created: 2019/05/04 12:29:37 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/04 12:31:16 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static size_t	count_dup(t_list **lst, size_t num_tetros)
 	i = 0;
 	if (!*lst)
 		return (0);
- 	curr = (*lst)->next;
+	curr = (*lst)->next;
 	check = *lst;
 	while (i < num_tetros && check)
 	{
@@ -57,7 +57,7 @@ static size_t	count_dup(t_list **lst, size_t num_tetros)
 			if (((t_tetro *)(curr->content))->tetro ==
 				((t_tetro *)(check->content))->tetro)
 				dups[i] += 1;
- 			curr = curr->next;
+			curr = curr->next;
 		}
 		check = check->next;
 		i++;
@@ -67,11 +67,11 @@ static size_t	count_dup(t_list **lst, size_t num_tetros)
 
 static int		get_size(t_list **tetros, size_t num_tetros, uint16_t *map)
 {
-	size_t start_size;
-	size_t duplicates;
-	int found;
+	size_t	start_size;
+	size_t	duplicates;
+	int		found;
 
- 	found = 0;
+	found = 0;
 	start_size = min_mapsize(num_tetros);
 	duplicates = count_dup(tetros, num_tetros);
 	if (duplicates < num_tetros / 2 || num_tetros < 6)
