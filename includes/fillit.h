@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 17:38:45 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:16:45 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	itocoor(int *x, int *y, size_t index, size_t size);
 int		ft_error(char *s);
 
 /** IN READ TETRO **/
-int		read_tetromino(int *lr, int fd, char **line, uint16_t  *dst);
+int		read_tetromino(int *lr, int fd, char **l, uint16_t  *d);
 
 /** IN VALIDATE TETRO **/
 int		validate_tetro(uint16_t *tetro, size_t total_size);

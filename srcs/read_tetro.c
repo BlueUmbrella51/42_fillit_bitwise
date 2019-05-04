@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 12:17:22 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 12:18:48 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:16:26 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static	int		valid_characters(char *line, char f, char e)
 	return (1);
 }
 
-int				read_tetromino(int *lr, int fd, char **line, unsigned short *dst)
+int				read_tetromino(int *lr, int fd, char **l, unsigned short *d)
 {
 	int i;
 
