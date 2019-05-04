@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 12:12:21 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 12:13:22 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:21:23 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static	int	check_tetro(t_list *curr, uint16_t *map, size_t mapsize)
 			tetro->x = index % mapsize;
 		while (tetro->x <= mapsize - tetro->width)
 		{
-			if (((*(uint64_t *)(map + tetro->y)) & (tetro->tetro >> tetro->x)) == 0)
+			if (((*(uint64_t *)(map + tetro->y)) &
+				(tetro->tetro >> tetro->x)) == 0)
 				return (1);
 			tetro->x++;
 		}
