@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 17:29:35 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 17:32:01 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/04 12:12:21 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/04 12:13:22 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	int	check_tetro(t_list *curr, uint16_t *map, size_t mapsize)
 	if (last)
 	{
 		index = ((t_tetro *)(last->content))->x +
-		((t_tetro *)(last->content))->y * mapsize;
+			((t_tetro *)(last->content))->y * mapsize;
 		tetro->y = index / mapsize;
 	}
 	else
@@ -47,7 +47,7 @@ static	int	check_tetro(t_list *curr, uint16_t *map, size_t mapsize)
 	return (0);
 }
 
-int				solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
+int			solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
 {
 	t_list *curr;
 
@@ -56,7 +56,7 @@ int				solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
 	curr = *tetros;
 	if (curr == NULL)
 		return (1);
-	if (mapsize < ((t_tetro *)(curr->content))->width || 
+	if (mapsize < ((t_tetro *)(curr->content))->width ||
 		mapsize < ((t_tetro *)(curr->content))->height)
 		return (0);
 	if (check_tetro(curr, map, mapsize))
