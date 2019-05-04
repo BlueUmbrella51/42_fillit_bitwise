@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:44:09 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/04 13:12:09 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:33:58 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ static int		tetro_wh(t_tetro *t, uint16_t msk, uint16_t *visit, size_t i)
 	size_t		total_size;
 
 	total_size = SIZE * SIZE;
-	if ((mask & t->fpt) != 0 && (*visited & mask) == 0)
+	if ((msk & t->fpt) != 0 && (*visit & msk) == 0)
 	{
-		prev_visited = *visited;
-		*visited |= mask;
-		if (count_ones(visited) == 4 && (prev_visited ^ *visited) == 0)
+		prev_visited = *visit;
+		*visit |= msk;
+		if (count_ones(visit) == 4 && (prev_visited ^ *visit) == 0)
 			return (0);
-		if (index < total_size - SIZE && (*visited & (mask << SIZE)) == 0)
-			t->height += tetro_wh(t, mask << SIZE, visited, index + SIZE);
-		if (index >= SIZE && (*visited & (mask >> SIZE)) == 0)
-			t->height += tetro_wh(t, mask >> SIZE, visited, index - SIZE);
-		if (index % SIZE != 0 && (*visited & (mask >> 1)) == 0)
-			t->width += tetro_wh(t, mask >> 1, visited, index - 1);
-		if ((index + 1) % SIZE != 0 && (*visited & (mask << 1)) == 0)
-			t->width += tetro_wh(t, mask << 1, visited, index + 1);
+		if (i < total_size - SIZE && (*visit & (msk << SIZE)) == 0)
+			t->height += tetro_wh(t, msk << SIZE, visit, i + SIZE);
+		if (i >= SIZE && (*visit & (msk >> SIZE)) == 0)
+			t->height += tetro_wh(t, msk >> SIZE, visit, i - SIZE);
+		if (i % SIZE != 0 && (*visit & (msk >> 1)) == 0)
+			t->width += tetro_wh(t, msk >> 1, visit, i - 1);
+		if ((i + 1) % SIZE != 0 && (*visit & (msk << 1)) == 0)
+			t->width += tetro_wh(t, msk << 1, visit, i + 1);
 		return (1);
 	}
 	return (0);

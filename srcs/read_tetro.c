@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 12:17:22 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 13:16:26 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:31:24 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ int				read_tetromino(int *lr, int fd, char **l, unsigned short *d)
 	i = 0;
 	while (i < SIZE)
 	{
-		*lr = get_next_line(fd, line);
+		*lr = get_next_line(fd, l);
 		if (*lr == 0)
 			return (ft_error("error"));
 		if (*lr < 0)
 			return (ft_error("error"));
-		if (!(valid_characters(*line, '#', '.')))
+		if (!(valid_characters(*l, '#', '.')))
 			return (ft_error("error"));
-		if (!(ft_strlen(*line) == 4))
+		if (!(ft_strlen(*l) == 4))
 			return (ft_error("error"));
-		to_bits(*line, dst, i, '#');
+		to_bits(*l, d, i, '#');
 		i++;
 	}
 	return (1);

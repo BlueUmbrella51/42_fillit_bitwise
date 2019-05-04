@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 11:50:39 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 13:07:18 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 13:30:17 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,21 @@ size_t			min_mapsize(size_t num_tetros)
 	return (i);
 }
 
+int				compare_tetros(t_list *list, t_tetro *check)
+{
+	t_list *curr;
+	size_t count;
 
+	curr = list;
+	while (curr)
+	{
+		if (((t_tetro *)(curr->content))->tetro ==
+			((t_tetro *)(check->content))->tetro)
+			count += 1;
+		curr = curr->next;
+	}
+	return (count);
+}
 
 static	size_t	count_dup(t_list **lst, size_t num_tetros)
 {
@@ -41,13 +55,7 @@ static	size_t	count_dup(t_list **lst, size_t num_tetros)
 	check = *lst;
 	while (i < num_tetros && check)
 	{
-		while (curr)
-		{
-			if (((t_tetro *)(curr->content))->tetro ==
-				((t_tetro *)(check->content))->tetro)
-				dups[i] += 1;
-			curr = curr->next;
-		}
+		dup[i] = compare_tetros(curr, check->content); 
 		check = check->next;
 		i++;
 	}
