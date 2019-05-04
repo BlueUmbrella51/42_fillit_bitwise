@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:23:13 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 18:23:51 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/04 14:38:11 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	swap_list(t_list *curr, t_list *new)
 static	int		compare_lst(t_list *curr, t_list *comp)
 {
 	if (((t_tetro *)(curr->content))->tetro ==
-((t_tetro*)(comp->content))->tetro)
+		((t_tetro*)(comp->content))->tetro)
 		return (1);
 	return (0);
 }

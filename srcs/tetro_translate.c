@@ -6,31 +6,31 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 18:16:26 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 18:17:23 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 14:39:45 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static	void	get_mask(uint16_t *top_row, uint16_t *left_col, size_t total_size)
+static	void	get_mask(uint16_t *top, uint16_t *left, size_t size)
 {
 	size_t i;
 
-	i = total_size - SIZE;
-	while (i < total_size)
+	i = size - SIZE;
+	while (i < size)
 	{
-		*top_row |=  1U << i;
+		*top |= 1U << i;
 		i++;
 	}
 	i = SIZE - 1;
-	while (i < total_size)
+	while (i < size)
 	{
-		*left_col |= 1U << i;
+		*left |= 1U << i;
 		i += SIZE;
 	}
 }
 
-void			tetro_translate (uint16_t *tetro, size_t total_size)
+void			tetro_translate(uint16_t *tetro, size_t total_size)
 {
 	uint16_t top_row;
 	uint16_t left_col;
