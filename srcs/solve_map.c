@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 13:45:45 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 14:50:02 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 16:05:03 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	solve_map(uint16_t *map, t_list **tetros, size_t map_size)
 		return (0);
 	if (last)
 	{
-		index = ((t_tetro *)(last->content))->x + ((t_tetro *)(last->content))->y * map_size;
+		index = ((t_tetro *)(last->content))->x +
+				((t_tetro *)(last->content))->y * map_size;
 		tetro->y = index / map_size;
 	}
 	else
