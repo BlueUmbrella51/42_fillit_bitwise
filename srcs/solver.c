@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:50:00 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 18:38:35 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 12:39:38 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static	int		check_fit(uint16_t *map, t_tetro *tetro)
 	return (0);
 }
 
-static int     same_rest(t_list *curr, t_list *rest)
+static	int		same_rest(t_list *curr, t_list *rest)
 {
 	t_list	*r;
 	t_tetro	*rc;
 	t_tetro	*ch;
- 
+
 	r = rest;
 	ch = curr->content;
 	if (!r)
@@ -34,7 +34,7 @@ static int     same_rest(t_list *curr, t_list *rest)
 	while (r)
 	{
 		rc = r->content;
-		if  (ch->fpt != rc->fpt)
+		if (ch->fpt != rc->fpt)
 			return (0);
 		r = r->next;
 	}
@@ -48,20 +48,20 @@ static	int		solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *m
 		tetro->x = 0;
 /*        if (tetro->y != 0)
             tetro->x = index % map_size;
-*/        while (tetro->x <= map_size - tetro->width)
+*/		while (tetro->x <= map_size - tetro->width)
 		{
 			if (check_fit(map, tetro))
 			{
 				toggle_tetro(map, tetro);
 				if (solve_map(map, &curr->next, map_size))
 					return (1); 
- 				toggle_tetro(map, tetro);
+				toggle_tetro(map, tetro);
 				if (same_rest(curr, curr->next))
 				{
 					tetro->x = 0;
 					tetro->y = 0;
 					return (0);
- 				}
+				}
 			}
 			tetro->x++;
 		}

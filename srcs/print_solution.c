@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:38:05 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 16:59:42 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/04 12:36:38 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	char	**initialize_array(size_t size)
 {
-	char    **res;
-	size_t  i;
+	char	**res;
+	size_t	i;
 
 	i = 0;
 	res = (char **)malloc(sizeof(char *) * size);
@@ -31,8 +31,8 @@ static	char	**initialize_array(size_t size)
 
 static	void	fill_array(char **res, size_t mapsize)
 {
-	size_t  i;
-	size_t  j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -50,8 +50,8 @@ static	void	fill_array(char **res, size_t mapsize)
 
 static	void	put_map(char **res, size_t mapsize)
 {
-	size_t  i;
-	size_t  j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -72,8 +72,8 @@ static	void	place_tetro(t_tetro *t, char **map)
 {
 	size_t		i;
 	int			x;
-    int			y;
-    uint16_t	mask;
+	int			y;
+	uint16_t	mask;
 
 	mask = (1U << 15);
 	i = 0;
@@ -91,11 +91,11 @@ static	void	place_tetro(t_tetro *t, char **map)
 	}
 }
 
-void			print_solution (t_list **tetros, size_t mapsize)
+void			print_solution(t_list **tetros, size_t mapsize)
 {
-    char		**res;
-    t_list		*curr;
-	
+	char		**res;
+	t_list		*curr;
+
 	res = initialize_array(mapsize);
 	fill_array(res, mapsize);
 	curr = *tetros;
