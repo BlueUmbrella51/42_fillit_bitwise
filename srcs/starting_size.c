@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 17:19:39 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 17:22:15 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/04 11:50:39 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/04 11:54:27 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-size_t 			min_mapsize(size_t num_tetros)
+size_t			min_mapsize(size_t num_tetros)
 {
 	size_t i;
 
