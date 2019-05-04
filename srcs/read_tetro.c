@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 17:14:17 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 17:16:23 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/04 12:17:22 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/04 12:18:48 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int				read_tetromino(int *lr, int fd, char **line, unsigned short *dst)
 		if (!(valid_characters(*line, '#', '.')))
 			return (ft_error("error"));
 		if (!(ft_strlen(*line) == 4))
-			return(ft_error("error"));
+			return (ft_error("error"));
 		to_bits(*line, dst, i, '#');
 		i++;
 	}
