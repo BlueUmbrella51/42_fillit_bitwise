@@ -30,8 +30,8 @@ int	main(int argc, char *argv[])
 	count = 0;
 	map = (uint16_t *)malloc(sizeof(uint16_t) * 16);
 	ft_bzero(map, sizeof(uint16_t) * 16);
-	if (read_input(fd, &tetros, &count) < 0)
-		return (0);
+	if (!read_input(fd, &tetros, &count))
+		return (ft_error("error"));
 	mapsize = checker(map, &tetros, count);
 	mapsize = solver(map, &tetros, mapsize);
 	print_solution(&tetros, mapsize);

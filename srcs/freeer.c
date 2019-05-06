@@ -29,3 +29,16 @@ void	free_map(char **map, size_t mapsize)
 	}
 	free(map);
 }
+
+void	free_tetro(char **tetro)
+{
+	int i;
+
+	i = 0;
+	while (tetro[i])
+	{
+		free (tetro[i]);
+		i++;
+	}
+	free (tetro);
+}

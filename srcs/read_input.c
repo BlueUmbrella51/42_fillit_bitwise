@@ -12,38 +12,81 @@
 
 #include "fillit.h"
 
+#include <stdio.h>
 static int	check_count(size_t *count)
 {
 	if (*count > 25)
-		return (ft_error("error"));
+		return (0);
+	return (1);
+}
+
+static	int		valid_characters(char *line, char f, char e)
+{
+	size_t i;
+
+	i = 0;
+	if (ft_strlen(line) == 21 && line[20] != '\n')
+		return (0);
+	while (i < 20)
+	{
+		if (i % 5 < 4)
+		{
+			if (line[i] != f && line[i] != e)
+				return (0);
+		}
+		else if (line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int			read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
+{
+	int nbr;
+	char buff[22];
+	char **tetro;
+	size_t total;
+
+	total = SIZE * SIZE;
+	nbr = 21;
+	tetro = NULL;
+	while (nbr >= 20)
+	{
+		ft_bzero(buff, 22);
+		nbr = read(fd, buff, 21);
+		printf("%d\n", nbr);
+		if (nbr == 0)
+			return (1);
+		if (nbr < 20)
+			return (0);
+		if (!check_count(count))
+			return (0);
+		tetro = ft_strsplit(buff, '\n');
+		if (!valid_characters(buff, '#', '.'))
+			return (0);
+		*dst = 0;
+		*count += 1;
+		read_tetromino(tetro, dst);
+		free_tetro(tetro);
+		if (!validate_tetro(dst, total))
+			return (0);
+		tetro_translate(dst, total);
+		if (!add_tetro(*dst, *count, list))
+			return (0);
+	}
 	return (1);
 }
 
 int			read_input(int fd, t_list **list, size_t *count)
 {
-	int				lr;
-	char			*line;
-	unsigned short	dst;
+	int 		test;
+	uint16_t	dst;
 
-	lr = 1;
-	while (lr == 1)
-	{
-		if (read_tetromino(&lr, fd, &line, &dst) < 1 ||
-			check_count(count) == 0)
-			break ;
-		*count += 1;
-		if (validate_tetro(&dst, SIZE * SIZE) == 1)
-		{
-			tetro_translate(&dst, SIZE * SIZE);
-			if (!add_tetro(dst, *count, list))
-				return (ft_error("error"));
-		}
-		else
-			return (-1);
-		dst = 0;
-		if (get_next_line(fd, &line) == 0)
-			return (0);
-		free(line);
-	}
-	return (-1);
+	dst = 0;
+	*list = NULL;
+	test = read_tetri(fd, count, &dst, list);
+	if (!test)
+		return (0);
+	return (1);
 }
