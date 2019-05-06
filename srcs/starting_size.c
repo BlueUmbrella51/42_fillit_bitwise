@@ -6,21 +6,11 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 11:50:39 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 09:56:21 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 10:26:32 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-size_t			min_mapsize(size_t num_tetros)
-{
-	size_t i;
-
-	i = 2;
-	while (i * i < (num_tetros * SIZE))
-		i++;
-	return (i);
-}
 
 int				compare_tetros(t_list *list, t_tetro *check)
 {
@@ -36,6 +26,21 @@ int				compare_tetros(t_list *list, t_tetro *check)
 		curr = curr->next;
 	}
 	return (count);
+}
+
+static size_t	count_duplicates(int *dups, size_t num_tetros)
+{
+	size_t i;
+	size_t res;
+
+	res = 0;
+	i = 0;
+	while (i < num_tetros)
+	{
+		res += dups[i];
+		i++;
+	}
+	return (res);
 }
 
 static	size_t	count_dup(t_list **lst, size_t num_tetros, size_t i)
@@ -57,13 +62,7 @@ static	size_t	count_dup(t_list **lst, size_t num_tetros, size_t i)
 		check = check->next;
 		i++;
 	}
-	i = 0;
-	while (i < num_tetros)
-	{
-		res += dups[i];
-		i++;
-	}
-	return (res);
+	return (count_duplicates(dups, num_tetros));
 }
 
 static	int		get_size(t_list **tetros, size_t num_tetros, uint16_t *map)
