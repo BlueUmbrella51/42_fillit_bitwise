@@ -3,17 +3,17 @@
 /*                                                        ::::::::            */
 /*   available_space.c                                  :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/06 08:59:59 by lravier       #+#    #+#                 */
-/*   Updated: 2019/05/06 09:00:53 by lravier       ########   odam.nl         */
+/*   Created: 2019/05/06 10:02:47 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/06 10:05:18 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 static size_t	count_adjacent(uint16_t *map, size_t x, size_t y,
-size_t mapsize)
+								size_t mapsize)
 {
 	size_t count;
 
@@ -48,11 +48,11 @@ static void		copy_map(uint16_t *map, uint16_t *dst)
 
 size_t			available_space(uint16_t *map, size_t mapsize)
 {
-	uint16_t c_map[16];
-	size_t x;
-	size_t y;
-	size_t count;
-	size_t total;
+	uint16_t	c_map[16];
+	size_t		x;
+	size_t		y;
+	size_t		count;
+	size_t		total;
 
 	copy_map(map, c_map);
 	total = 0;
