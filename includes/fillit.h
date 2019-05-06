@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 15:19:20 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 10:16:30 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct	s_tetro
 	char			print;
 }				t_tetro;
 
+size_t			available_space(uint16_t *map, size_t mapsize);
+size_t			lst_len(t_list **lst);
 int				read_input(int fd, t_list **list, size_t *count);
 int				add_tetro(uint16_t tetr, size_t count, t_list **lst);
 uint64_t		convert_sll(uint16_t t);
@@ -43,7 +45,7 @@ int				validate_tetro(uint16_t *tetro, size_t total_size);
 int				checker(uint16_t *map, t_list **tetros, size_t num_tetros);
 void			tetro_translate (uint16_t *tetro, size_t total_size);
 int				initialize_map(uint16_t **map);
-int				find_permutations(t_list *lst, t_list *pos, uint16_t *map, size_t num_tetros, int *found);
+int				find_permutations(t_list *lst, t_list *pos, uint16_t *map, size_t min_size);
 int				solver(uint16_t *map, t_list **tetros, size_t map_size);
 int				solve_map(uint16_t *map, t_list **tetros, size_t map_size);
 int				solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map);

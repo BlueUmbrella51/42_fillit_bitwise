@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/05/04 15:17:18 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/05/06 10:16:52 by jdunnink      ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,7 +19,6 @@ SRC =	read_input.c			\
 		tetro_translate.c		\
 		validate_tetro.c 		\
 		checker.c				\
-		print_map.c				\
 		list_sort.c				\
 		print_solution.c		\
 		toggle_tetro.c			\
@@ -32,6 +31,8 @@ SRC =	read_input.c			\
 		sizer.c					\
 		solve_map.c				\
 		solve_pos.c				\
+		list_len.c				\
+		available_space.c		\
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs
