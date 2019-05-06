@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/05/06 10:16:52 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/05/06 10:21:14 by jdunnink      ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -63,7 +63,10 @@ $(OBJS): $(SRCS)
 clean:
 	/bin/rm -Rf $(OBJDIR)
 	/bin/rm -Rf *~ *#
+	make -C libft/ clean
+
 fclean: clean
+	make -C libft/ fclean
 	/bin/rm -f $(NAME)
 
 re: fclean all
