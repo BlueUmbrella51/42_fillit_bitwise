@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 10:44:17 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 11:50:36 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int				initialize_map(uint16_t **map);
 int				find_perm(t_list *lst, t_list *pos, uint16_t *map, size_t min);
 int				solver(uint16_t *map, t_list **tetros, size_t map_size);
 int				solve_map(uint16_t *map, t_list **tetros, size_t map_size);
-int				solve_ps(t_list *curr, size_t size, uint16_t *mpm, size_t index);
+int				solve_ps(t_list *curr, size_t size, uint16_t *mp, size_t i);
 void			list_sort(t_list *tetros);
 void			print_solution (t_list **tetros, size_t mapsize);
 void			toggle_tetro(uint16_t *map, t_tetro *tetro);

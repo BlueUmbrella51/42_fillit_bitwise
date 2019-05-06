@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 13:48:05 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 11:47:56 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 11:51:03 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static	int		check_pos(uint16_t *map, size_t size, t_list *lst, size_t index)
 	return (0);
 }
 
-int				solve_ps(t_list *lst, size_t size, uint16_t *map, size_t index)
+int				solve_ps(t_list *lst, size_t size, uint16_t *mp, size_t i)
 {
 	if (size > 10)
 	{
