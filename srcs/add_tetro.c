@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:44:09 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 13:32:34 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 13:46:17 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static	void	find_last(t_list **lst, t_tetro *t)
 	}
 }
 
-static t_tetro			set_attributes(uint16_t tetr, size_t count)
+static t_tetro	set_attributes(uint16_t tetr, size_t count)
 {
 	t_tetro t;
 

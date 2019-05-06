@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 12:01:00 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 13:46:59 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define SIZE 4
 
 # include <stdint.h>
-# include <stdio.h>
 
 typedef struct	s_tetro
 {
