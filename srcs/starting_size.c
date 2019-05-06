@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/04 11:50:39 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 14:42:11 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/04 11:50:39 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/05/06 09:56:21 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				compare_tetros(t_list *list, t_tetro *check)
 	while (curr)
 	{
 		if (((t_tetro *)(curr->content))->tetro ==
-			((t_tetro *)(check->content))->tetro)
+			((t_tetro *)(check)->tetro))
 			count += 1;
 		curr = curr->next;
 	}
@@ -53,7 +53,7 @@ static	size_t	count_dup(t_list **lst, size_t num_tetros, size_t i)
 	check = *lst;
 	while (i < num_tetros && check)
 	{
-		dup[i] = compare_tetros(curr, check->content);
+		dups[i] = compare_tetros(curr, check->content);
 		check = check->next;
 		i++;
 	}
