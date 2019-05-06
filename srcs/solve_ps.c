@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   solve_pos.c                                        :+:    :+:            */
+/*   solve_ps.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/04 13:48:05 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/06 10:29:01 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/04 13:48:05 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/05/06 10:43:31 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ static	int		same_rest(t_list *curr, t_list *rest)
 	return (1);
 }
 
-int				solve_ps(t_list *lst, t_tetro *tro, size_t size, uint16_t *map)
+int				solve_ps(t_list *lst, size_t size, uint16_t *map, size_t index)
 {
+	t_tetro *tro;
+
+	tro = (t_tetro *)lst->content;
 	while (tro->y <= size - tro->height)
 	{
 		tro->x = 0;
+		if (tro->y == index / size)
+			tro->x = index % size;
 		while (tro->x <= size - tro->width)
 		{
 			if (check_fit(map, tro))
