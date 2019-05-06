@@ -6,11 +6,18 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:11:12 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 12:08:11 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 13:02:12 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static int	check_count(size_t *count)
+{
+	if (*count > 25)
+		return (ft_error("error"));
+	return (1);
+}
 
 int			read_input(int fd, t_list **list, size_t *count)
 {
@@ -21,9 +28,8 @@ int			read_input(int fd, t_list **list, size_t *count)
 	lr = 1;
 	while (lr == 1)
 	{
-		if (*count > 25)
-			return (ft_error("error"));
-		if (read_tetromino(&lr, fd, &line, &dst) < 1)
+		if (read_tetromino(&lr, fd, &line, &dst) < 1 ||
+			check_count(count) == 0)
 			break ;
 		*count += 1;
 		if (validate_tetro(&dst, SIZE * SIZE) == 1)
