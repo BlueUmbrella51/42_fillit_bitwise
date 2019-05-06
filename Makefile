@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/05/06 10:29:27 by jdunnink      ########   odam.nl          #
+#    Created: 2019/04/18 08:51:33 by lravier        #+#    #+#                 #
+#    Updated: 2019/05/06 10:36:50 by lravier       ########   odam.nl          #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME = fillit
 
@@ -18,7 +18,6 @@ SRC =	read_input.c			\
 		solver.c				\
 		tetro_translate.c		\
 		validate_tetro.c 		\
-		checker.c				\
 		list_sort.c				\
 		print_solution.c		\
 		toggle_tetro.c			\
@@ -33,6 +32,8 @@ SRC =	read_input.c			\
 		solve_ps.c				\
 		list_len.c				\
 		available_space.c		\
+		starting_size.c 		\
+		min_mapsize.c
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs

@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 11:50:39 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 10:26:32 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 10:37:46 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int				compare_tetros(t_list *list, t_tetro *check)
 	size_t count;
 
 	curr = list;
+	count = 0;
 	while (curr)
 	{
 		if (((t_tetro *)(curr->content))->tetro ==
-			((t_tetro *)(check)->tetro))
+			(check->tetro))
 			count += 1;
 		curr = curr->next;
 	}
@@ -76,7 +77,7 @@ static	int		get_size(t_list **tetros, size_t num_tetros, uint16_t *map)
 	duplicates = count_dup(tetros, num_tetros, 0);
 	if (duplicates < num_tetros / 2 || num_tetros < 6)
 		return (start_size);
-	while (!find_permutations(*tetros, *tetros, map, start_size, &found))
+	while (!find_perm(*tetros, *tetros, map, start_size))
 	{
 		ft_bzero(map, sizeof(uint16_t) * 16);
 		start_size++;

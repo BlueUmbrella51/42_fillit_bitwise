@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 17:38:42 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/06 10:26:34 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/03 17:38:42 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/05/06 10:37:15 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void			toggle_tetro(uint16_t *map, t_tetro *tetro);
 int				count_ones(uint16_t *tetro);
 int				solve_it(t_list **tetros, uint16_t *map, size_t mapsize);
 uint64_t		convert_sll(uint16_t t);
+size_t			min_mapsize(size_t num_tetros);
 
 #endif
