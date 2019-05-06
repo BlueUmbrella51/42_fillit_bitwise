@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:44:09 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/04 13:33:58 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 12:16:21 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,42 +69,42 @@ static	void	find_last(t_list **lst, t_tetro *t)
 	}
 }
 
-void			set_attributes(uint16_t tetr, size_t count, t_tetro *t)
+t_tetro			set_attributes(uint16_t tetr, size_t count)
 {
-	t->fpt = tetr;
-	t->tetro = convert_sll(tetr);
-	t->print = 'A' + (count - 1);
-	t->order = count;
-	t->last = NULL;
-	t->x = 0;
-	t->y = 0;
-	t->width = 1;
-	t->height = 1;
+	t_tetro t;
+
+	t.fpt = tetr;
+	t.tetro = convert_sll(tetr);
+	t.print = 'A' + (count - 1);
+	t.order = count;
+	t.last = NULL;
+	t.x = 0;
+	t.y = 0;
+	t.width = 1;
+	t.height = 1;
+	return (t);
 }
 
 int				add_tetro(uint16_t tetr, size_t count, t_list **lst)
 {
-	t_tetro		*t;
+	t_tetro		t;
 	size_t		index;
 	uint16_t	mask;
 	uint16_t	visited;
 
-	t = (t_tetro *)malloc(sizeof(t_tetro));
-	if (!t)
-		return (0);
-	set_attributes(tetr, count, t);
+	t = set_attributes(tetr, count);
 	index = find_first(tetr);
 	mask = (1U << index);
 	visited = 0UL;
-	if (t->fpt == 52224)
+	if (t.fpt == 52224)
 	{
-		t->width = 2;
-		t->height = 2;
+		t.width = 2;
+		t.height = 2;
 	}
 	else
-		tetro_wh(t, mask, &visited, index);
-	find_last(lst, t);
-	if (!(ft_lstaddend(lst, t, sizeof(t_tetro))))
+		tetro_wh(&t, mask, &visited, index);
+	find_last(lst, &t);
+	if (!(ft_lstaddend(lst, &t, sizeof(t_tetro))))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 13:48:05 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 11:51:03 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 12:05:54 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static	int		same_rest(t_list *curr, t_list *rest)
 	return (1);
 }
 
-static	int		check_pos(uint16_t *map, size_t size, t_list *lst, size_t index)
+static int		check_pos(uint16_t *map, size_t size, t_list *lst, size_t index)
 {
 	t_tetro *tro;
 
@@ -74,10 +74,10 @@ int				solve_ps(t_list *lst, size_t size, uint16_t *mp, size_t i)
 {
 	if (size > 10)
 	{
-		if (available_space(map, size) < (lst_len(&lst) * 4))
+		if (available_space(mp, size) < (lst_len(&lst) * 4))
 			return (0);
 	}
-	if (check_pos(map, size, lst, index) == 1)
+	if (check_pos(mp, size, lst, i) == 1)
 		return (1);
 	return (0);
 }

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/04 12:10:09 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 14:48:01 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/04 12:10:09 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/05/06 12:02:54 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int argc, char *argv[])
 	int			fd;
 	size_t		count;
 
+	tetros = NULL;
+	fd = 0;
 	if (argc != 2)
 		return (ft_error("usage: source_file"));
 	fd = open(argv[1], O_RDONLY);

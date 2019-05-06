@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 17:11:12 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 15:59:40 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/03 17:11:12 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/05/06 12:08:11 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			read_input(int fd, t_list **list, size_t *count)
 		dst = 0;
 		if (get_next_line(fd, &line) == 0)
 			return (0);
+		free(line);
 	}
 	return (-1);
 }
