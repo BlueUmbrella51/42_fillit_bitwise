@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 15:38:05 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 12:36:38 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/03 15:38:05 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/05/06 12:22:44 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,5 @@ void			print_solution(t_list **tetros, size_t mapsize)
 		curr = curr->next;
 	}
 	put_map(res, mapsize);
+	free_map(res, mapsize);
 }
