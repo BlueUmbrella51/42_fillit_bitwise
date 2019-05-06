@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 13:48:05 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 11:04:22 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 11:47:56 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,15 @@ static	int		same_rest(t_list *curr, t_list *rest)
 	return (1);
 }
 
-int				solve_ps(t_list *lst, size_t size, uint16_t *map, size_t index)
+static	int		check_pos(uint16_t *map, size_t size, t_list *lst, size_t index)
 {
 	t_tetro *tro;
 
-	if (size > 10)
-	{
-		if (available_space(map, size) < (lst_len(&lst) * 4))
-			return (0);
-	}
 	tro = (t_tetro *)lst->content;
 	while (tro->y <= size - tro->height)
 	{
 		tro->x = 0;
-		if (tro->y == index / size)
-			tro->x = index % size;
+		tro->y == index / size ? (tro->x = index % size) : 0;
 		while (tro->x <= size - tro->width)
 		{
 			if (check_fit(map, tro))
@@ -73,5 +67,17 @@ int				solve_ps(t_list *lst, size_t size, uint16_t *map, size_t index)
 	}
 	tro->x = 0;
 	tro->y = 0;
+	return (0);
+}
+
+int				solve_ps(t_list *lst, size_t size, uint16_t *map, size_t index)
+{
+	if (size > 10)
+	{
+		if (available_space(map, size) < (lst_len(&lst) * 4))
+			return (0);
+	}
+	if (check_pos(map, size, lst, index) == 1)
+		return (1);
 	return (0);
 }
