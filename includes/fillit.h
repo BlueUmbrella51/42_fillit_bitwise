@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 11:50:36 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 12:01:00 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct	s_tetro
 	char			print;
 }				t_tetro;
 
+void			free_list(t_list **lst);
+void			free_map(char **map, size_t mapsize);
 size_t			available_space(uint16_t *map, size_t mapsize);
 size_t			lst_len(t_list **lst);
 int				read_input(int fd, t_list **list, size_t *count);
