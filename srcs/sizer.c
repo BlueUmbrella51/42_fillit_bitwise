@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 17:29:35 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/03 17:32:01 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/05/06 09:56:43 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/06 09:58:34 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int	check_pos(t_list *curr, uint16_t *map, size_t mapsize, size_t index)
 			tetro->x = index % mapsize;
 		while (tetro->x <= mapsize - tetro->width)
 		{
-			if (((*(uint64_t *)(map + tetro->y)) & (tetro->tetro >> tetro->x)) == 0)
+			if (((*(uint64_t *)(map + tetro->y)) &
+				(tetro->tetro >> tetro->x)) == 0)
 				return (1);
 			tetro->x++;
 		}
@@ -52,7 +53,7 @@ static	int	check_tetro(t_list *curr, uint16_t *map, size_t mapsize)
 	if (last)
 	{
 		index = ((t_tetro *)(last->content))->x +
-		((t_tetro *)(last->content))->y * mapsize;
+			((t_tetro *)(last->content))->y * mapsize;
 		tetro->y = index / mapsize;
 	}
 	else
@@ -60,7 +61,7 @@ static	int	check_tetro(t_list *curr, uint16_t *map, size_t mapsize)
 	return (check_pos(curr, map, mapsize, index));
 }
 
-int				solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
+int			solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
 {
 	t_list *curr;
 
@@ -69,7 +70,7 @@ int				solve_it(t_list **tetros, uint16_t *map, size_t mapsize)
 	curr = *tetros;
 	if (curr == NULL)
 		return (1);
-	if (mapsize < ((t_tetro *)(curr->content))->width || 
+	if (mapsize < ((t_tetro *)(curr->content))->width ||
 		mapsize < ((t_tetro *)(curr->content))->height)
 		return (0);
 	if (check_tetro(curr, map, mapsize))
