@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 13:48:05 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/04 14:21:05 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 10:29:01 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static	int		same_rest(t_list *curr, t_list *rest)
 	return (1);
 }
 
-int				solve_pos(t_list *lst, t_tetro *tro, size_t size, uint16_t *map)
+int				solve_ps(t_list *lst, t_tetro *tro, size_t size, uint16_t *map)
 {
 	while (tro->y <= size - tro->height)
 	{

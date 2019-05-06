@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:23:13 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/06 09:02:20 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 10:30:33 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static	int		should_swap(t_list *start, t_list *curr)
 	return (1);
 }
 
-int				find_permutations(t_list *lst, t_list *pos,
-uint16_t *map, size_t min_size)
+int				find_perm(t_list *lst, t_list *pos,
+uint16_t *map, size_t min)
 {
 	t_list	*curr;
 	int		found;
@@ -54,7 +54,7 @@ uint16_t *map, size_t min_size)
 	if (!pos)
 	{
 		ft_bzero(map, sizeof(uint16_t) * 16);
-		found = solve_it(&lst, map, min_size);
+		found = solve_it(&lst, map, min);
 	}
 	if (found)
 		return (1);
@@ -63,7 +63,7 @@ uint16_t *map, size_t min_size)
 		if (should_swap(pos, curr))
 		{
 			swap_list(pos, curr);
-			found = find_permutations(lst, pos->next, map, min_size);
+			found = find_perm(lst, pos->next, map, min);
 			if (found)
 				return (1);
 			swap_list(pos, curr);

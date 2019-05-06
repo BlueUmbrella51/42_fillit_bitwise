@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier       #+#    #+#                  #
-#    Updated: 2019/05/06 10:21:14 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/05/06 10:29:27 by jdunnink      ########   odam.nl          #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,14 +23,14 @@ SRC =	read_input.c			\
 		print_solution.c		\
 		toggle_tetro.c			\
 		add_tetro.c				\
-		find_permutations.c 	\
+		find_perm.c			 	\
 		ft_error.c 				\
 		itocoor.c				\
 		count_ones.c 			\
 		index_conversion.c 		\
 		sizer.c					\
 		solve_map.c				\
-		solve_pos.c				\
+		solve_ps.c				\
 		list_len.c				\
 		available_space.c		\
 

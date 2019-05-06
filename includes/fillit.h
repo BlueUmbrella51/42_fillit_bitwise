@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/06 10:16:30 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/06 10:26:34 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int				validate_tetro(uint16_t *tetro, size_t total_size);
 int				checker(uint16_t *map, t_list **tetros, size_t num_tetros);
 void			tetro_translate (uint16_t *tetro, size_t total_size);
 int				initialize_map(uint16_t **map);
-int				find_permutations(t_list *lst, t_list *pos, uint16_t *map, size_t min_size);
+int				find_perm(t_list *lst, t_list *pos, uint16_t *map, size_t min);
 int				solver(uint16_t *map, t_list **tetros, size_t map_size);
 int				solve_map(uint16_t *map, t_list **tetros, size_t map_size);
-int				solve_pos(t_list *curr, t_tetro *tetro, size_t map_size, uint16_t *map);
+int				solve_ps(t_list *curr, t_tetro *tro, size_t size, uint16_t *mp);
 void			list_sort(t_list *tetros);
 void			print_solution (t_list **tetros, size_t mapsize);
 void			toggle_tetro(uint16_t *map, t_tetro *tetro);
