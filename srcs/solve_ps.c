@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 13:48:05 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 10:43:31 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 10:50:22 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static	int		same_rest(t_list *curr, t_list *rest)
 			return (0);
 		r = r->next;
 	}
+	ch->x = 0;
+	ch->y = 0;
 	return (1);
 }
 
@@ -58,11 +60,7 @@ int				solve_ps(t_list *lst, size_t size, uint16_t *map, size_t index)
 					return (1);
 				toggle_tetro(map, tro);
 				if (same_rest(lst, lst->next))
-				{
-					tro->x = 0;
-					tro->y = 0;
 					return (0);
-				}
 			}
 			tro->x++;
 		}
