@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   list_len.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lravier <marvin@codam.nl>                    +#+                     */
+/*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/06 09:05:03 by lravier       #+#    #+#                 */
-/*   Updated: 2019/05/06 09:05:51 by lravier       ########   odam.nl         */
+/*   Created: 2019/05/06 10:00:35 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/05/06 10:00:45 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
