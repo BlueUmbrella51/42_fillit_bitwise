@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 12:10:09 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 12:02:54 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 12:17:30 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	main(int argc, char *argv[])
 	mapsize = checker(map, &tetros, count);
 	mapsize = solver(map, &tetros, mapsize);
 	print_solution(&tetros, mapsize);
+	free(map);
 	return (0);
 }
