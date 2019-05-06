@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 13:48:05 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 10:50:22 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/06 11:04:22 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ int				solve_ps(t_list *lst, size_t size, uint16_t *map, size_t index)
 {
 	t_tetro *tro;
 
+	if (size > 10)
+	{
+		if (available_space(map, size) < (lst_len(&lst) * 4))
+			return (0);
+	}
 	tro = (t_tetro *)lst->content;
 	while (tro->y <= size - tro->height)
 	{
