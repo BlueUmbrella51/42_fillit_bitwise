@@ -6,12 +6,11 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 12:10:09 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/07 12:06:13 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/07 17:18:24 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
@@ -34,7 +33,6 @@ int	main(int argc, char *argv[])
 	if (!read_input(fd, &tetros, &count))
 		return (ft_error("error"));
 	mapsize = checker(map, &tetros, count);
-	printf("\nmapsize : %lu\n", mapsize);
 	ft_bzero(map, sizeof(uint16_t) * 16);
 	mapsize = solver(map, &tetros, mapsize);
 	print_solution(&tetros, mapsize);

@@ -6,12 +6,11 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:23:13 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/05/07 12:16:43 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/07 17:19:17 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static	void	swap_list(t_list *curr, t_list *new)
 {
@@ -48,20 +47,12 @@ int				find_perm(t_list *lst, t_list *pos,
 uint16_t *map, size_t min)
 {
 	t_list	*curr;
-	t_list *cur;
 	int		found;
 
 	found = 0;
 	curr = pos;
-	cur = lst;
 	if (!pos)
 	{
-    	while (cur)
-    	{
-        	printf("%lu ", ((t_tetro *)cur->content)->order);
-        	cur = cur->next;
-    	}
-		ft_putchar('\n');
 		ft_bzero(map, sizeof(uint16_t) * 16);
 		found = solve_it(&lst, map, min);
 	}

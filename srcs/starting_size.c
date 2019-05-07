@@ -6,12 +6,11 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/04 11:50:39 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/07 12:13:02 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/07 17:01:26 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int				compare_tetros(t_list *list, t_tetro *check)
 {
