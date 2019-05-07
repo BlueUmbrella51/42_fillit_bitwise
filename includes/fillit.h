@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:38:42 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 13:46:59 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/07 10:47:36 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				add_tetro(uint16_t tetr, size_t count, t_list **lst);
 uint64_t		convert_sll(uint16_t t);
 void			itocoor(int *x, int *y, size_t index, size_t size);
 int				ft_error(char *s);
-void				read_tetromino(char **l, uint16_t *d);
+void			read_tetromino(char **l, uint16_t *d);
 int				validate_tetro(uint16_t *tetro, size_t total_size);
 int				checker(uint16_t *map, t_list **tetros, size_t num_tetros);
 void			tetro_translate (uint16_t *tetro, size_t total_size);

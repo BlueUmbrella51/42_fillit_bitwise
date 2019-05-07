@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:11:12 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/07 10:10:42 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/07 10:49:44 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ static int		valid_characters(char *line, char f, char e)
 	return (1);
 }
 
-int				validate_input(size_t *count, char *buff, uint16_t *dst, t_list **list)
+int				validate_input(size_t *count, char *buff, uint16_t *dst,
+t_list **list)
 {
-	char **tetro;
-	size_t total;
+	char	**tetro;
+	size_t	total;
 
 	total = SIZE * SIZE;
 	tetro = NULL;
@@ -91,9 +92,9 @@ int				read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
 	return (1);
 }
 
-int			read_input(int fd, t_list **list, size_t *count)
+int				read_input(int fd, t_list **list, size_t *count)
 {
-	int 		test;
+	int			test;
 	uint16_t	dst;
 
 	dst = 0;
