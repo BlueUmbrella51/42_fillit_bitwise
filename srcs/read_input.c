@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:11:12 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/06 13:02:12 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/05/07 10:02:31 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int			read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
 	char buff[22];
 	char **tetro;
 	size_t total;
+	int pnbr;
 
+	pnbr = 0;
 	total = SIZE * SIZE;
 	nbr = 21;
 	tetro = NULL;
@@ -57,7 +59,11 @@ int			read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
 		nbr = read(fd, buff, 21);
 		printf("%d\n", nbr);
 		if (nbr == 0)
-			return (1);
+		{
+			if (pnbr == 20)
+				return (1);
+			return (0);
+		}
 		if (nbr < 20)
 			return (0);
 		if (!check_count(count))
@@ -74,6 +80,7 @@ int			read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
 		tetro_translate(dst, total);
 		if (!add_tetro(*dst, *count, list))
 			return (0);
+		pnbr = nbr;
 	}
 	return (1);
 }
