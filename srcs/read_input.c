@@ -6,21 +6,20 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 17:11:12 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/05/07 10:02:31 by lravier       ########   odam.nl         */
+/*   Updated: 2019/05/07 10:10:42 by lravier       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-#include <stdio.h>
-static int	check_count(size_t *count)
+static int		check_count(size_t *count)
 {
 	if (*count > 25)
 		return (0);
 	return (1);
 }
 
-static	int		valid_characters(char *line, char f, char e)
+static int		valid_characters(char *line, char f, char e)
 {
 	size_t i;
 
@@ -41,23 +40,42 @@ static	int		valid_characters(char *line, char f, char e)
 	return (1);
 }
 
-int			read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
+int				validate_input(size_t *count, char *buff, uint16_t *dst, t_list **list)
 {
-	int nbr;
-	char buff[22];
 	char **tetro;
 	size_t total;
-	int pnbr;
+
+	total = SIZE * SIZE;
+	tetro = NULL;
+	if (!check_count(count))
+		return (0);
+	tetro = ft_strsplit(buff, '\n');
+	if (!valid_characters(buff, '#', '.'))
+		return (0);
+	*dst = 0;
+	*count += 1;
+	read_tetromino(tetro, dst);
+	free_tetro(tetro);
+	if (!validate_tetro(dst, total))
+		return (0);
+	tetro_translate(dst, total);
+	if (!add_tetro(*dst, *count, list))
+		return (0);
+	return (1);
+}
+
+int				read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
+{
+	int		nbr;
+	char	buff[22];
+	int		pnbr;
 
 	pnbr = 0;
-	total = SIZE * SIZE;
 	nbr = 21;
-	tetro = NULL;
 	while (nbr >= 20)
 	{
 		ft_bzero(buff, 22);
 		nbr = read(fd, buff, 21);
-		printf("%d\n", nbr);
 		if (nbr == 0)
 		{
 			if (pnbr == 20)
@@ -66,19 +84,7 @@ int			read_tetri(int fd, size_t *count, uint16_t *dst, t_list **list)
 		}
 		if (nbr < 20)
 			return (0);
-		if (!check_count(count))
-			return (0);
-		tetro = ft_strsplit(buff, '\n');
-		if (!valid_characters(buff, '#', '.'))
-			return (0);
-		*dst = 0;
-		*count += 1;
-		read_tetromino(tetro, dst);
-		free_tetro(tetro);
-		if (!validate_tetro(dst, total))
-			return (0);
-		tetro_translate(dst, total);
-		if (!add_tetro(*dst, *count, list))
+		if (!validate_input(count, buff, dst, list))
 			return (0);
 		pnbr = nbr;
 	}
