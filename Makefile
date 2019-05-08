@@ -18,23 +18,19 @@ SRC =	read_input.c			\
 		solver.c				\
 		tetro_translate.c		\
 		validate_tetro.c 		\
-		list_sort.c				\
 		print_solution.c		\
 		toggle_tetro.c			\
 		add_tetro.c				\
-		find_perm.c			 	\
 		ft_error.c 				\
 		itocoor.c				\
 		count_ones.c 			\
 		index_conversion.c 		\
-		sizer.c					\
 		solve_map.c				\
 		solve_ps.c				\
-		list_len.c				\
 		available_space.c		\
-		starting_size.c 		\
 		min_mapsize.c			\
 		freeer.c				\
+		list_len.c
 
 OBJ = $(SRC:.c=.o)
 SRCDIR = srcs
