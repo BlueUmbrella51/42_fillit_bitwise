@@ -6,7 +6,7 @@
 #    By: lravier <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/18 08:51:33 by lravier        #+#    #+#                 #
-#    Updated: 2019/05/06 11:58:52 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/05/08 12:11:47 by lravier       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ LIB = -L libft/ -lft
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C libft/ fclean && make -C libft
+	make -C libft/ 
 	$(CC) -o fillit $(CFLAGS) $(OBJS) $(HEADER) $(LIB)
 
 $(OBJS): $(SRCS)
