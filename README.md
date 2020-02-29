@@ -77,6 +77,7 @@ First, we create a bit mask out of every tetromino. Then we translate the tetrom
     for a place for the tetromino that leads to a solution.
  
 <h3>Optimization</h3>
+
 Obviously, the level of recursion can get pretty deep in this algorithm. One of the ways we tried to limit the amount of
 time it takes for our algorithm to find a solution (if there is one), is by doing all our operations on a bitwise level.
 Our tetrominoes are stored as bit masks, that can be overlayed on our map and toggled relatively fast and efficiently.
