@@ -50,29 +50,29 @@ We started working on this in the following assumptions:
 
 1. A map will never have to be bigger than 16 by 16 places
 The maximum of 26 tetrominoes that each contain 4 occupied spaces means that any solution will have a maximum of 104
-occupied spaces
+occupied spaces.
 A map of size 16 will have 256 available spaces. Therefore, a map of this size would allow for 152 unoccupied spaces
 in the solution, which is a loss of space of roughly 60%.
 The nature of the tetrominoes makes it impossible to account for that much inefficiency in filling the map.
 
 2. A map will never be smaller than the square root of the number of (assumed to be square) tetrominoes times four
-(the number of spaces it occupies)
+(the number of spaces it occupies).
 
 Our algorithm consists of the following steps:
-1. Every tetromino is converted to a bit mask
+1. Every tetromino is converted to a bit mask.  
 First, we create a bit mask out of every tetromino. Then we translate the tetromino so that it is in the most upper-left position in a four by four grid.
-2. We create a map with the calculated minimal size
-2. We recursively place all tetrominoes in the map in the following way:
-  1. We check whether a tetromino's width of height if bigger than the map size
-  If not, we increase the map size
-  2. If we are working with large maps, we calculate whether the space that is available could theoretically fit the
-  number of tetrominoes that still need to be placed.
+2. We create a map with the calculated minimal size.
+3. We recursively place all tetrominoes in the map in the following way:  
+    1. We check whether a tetromino's width or height is bigger than the map size.  
+    If so, we increase the map size.
+    2. If we are working with large maps, we calculate whether the space that is available could theoretically fit the
+  number of tetrominoes that still need to be placed.  
   If not, we increase the map size.
-  3. We check whether a tetromino fits at the current x and y coordinate we are looking at in the map
-  If not, we shift through all available coordinate in the map until we either:
-    + Find a place where it fits
+    3. We check whether a tetromino fits at the current x and y coordinate we are looking at in the map  
+  If not, we shift through all available coordinates in the map until we either:
+        * Find a place where it fits  
     If this is the case, we put the tetromino in the map and move on to the next one
-    + Get to the bottom-right corner of the map
+        * Get to the bottom-right corner of the map  
     In which case we break out of a level of recursion and remove the last placed tetromino, then continue looking
     for a place for the tetromino that leads to a solution.
  
